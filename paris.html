@@ -9,38 +9,7 @@
 -->
     <head>
         <title>Paris</title>
-
-        <style type="text/css">
-            a.navBar:hover 
-            {
-                //font-family:Copperplate Gothic Light; 
-                background-color:#33ff99; 
-                color:Green 
-            }
-            .box1
-            {
-                border:3;
-                width : 425; border-style:ridge; border-color:#ccff99;  
-                text-align:center;  padding-bottom:1; padding-top:1; padding-left:5; padding-right:5; 
-                margin:0 auto;
-            }
-            .box2
-            {
-                vertical-align:middle;
-                border:3;
-                width:70%; border-style:ridge; border-color:#ccff99;  
-                text-align:center;  padding-bottom:13; padding-top:3; padding-left:120; padding-right:120; 
-                margin:0 auto;   
-            }
-            .box3
-            {
-                border:3;
-                width:50%; border-style:ridge; border-color:#ccff99;  
-                text-align:center;  padding-bottom:1; padding-top:1; padding-left:5; padding-right:5; 
-                margin:0 auto;
-            }
-        </style>
-
+        <link rel="stylesheet" type="text/css" href="styles.css" />   
 		<script type ="text/javascript" src ="modernizr.custom.05819.js"></script>
     </head>
     <body style="background-color:#CCFFCC"> <!--ccff99-->
@@ -68,7 +37,7 @@
       
 
 
-        <div class="box1" >
+        <div id="box1" > <!-- first box with picutre and small info -->
             <h1 style="text-align:center;font-family:Calibri; font-size:35; color:#669900; "> </h1> <!-- add title later -->
 			<p> Add more information here about Paris....</p>
             <img  alt = "pics of Paris places" src="images/DSC_0406.jpg"  height="260px" width="400px" onmouseout="src='images/norteDame.jpg'" onmouseover="src='images/DSC_0406.jpg'" />
@@ -76,7 +45,7 @@
             <br />  
         </div>
         <br />
-        <div class="box2">
+        <div id="box2"><!-- second box with has top ten sites -->
             <h3 style="text-align:center;font-family:Calibri; font-size:35; color:#669900" >Top Sites To Visit</h3>
             <hr size=4  width="90%" /> <!-- looks best with no color-->
 
@@ -95,7 +64,7 @@
             </p>
         </div>
 		<br />
-		<div class="box3" >
+		<div id="box3" ><!-- box three, show map of city, works with internet explorer -->
             <h1 style="text-align:center;font-family:Calibri; font-size:35; color:#669900" ><u>PARIS</u></h1>    
                 <iframe src="http://www.map-generator.org/5782457e-770d-4c73-8aa6-07516306e99a/iframe-map.aspx" scrolling="no" width=80% height="400px" 
                 frameborder="0" marginheight="0" marginwidth="0"></iframe><br><small>

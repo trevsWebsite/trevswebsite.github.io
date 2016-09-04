@@ -6,21 +6,21 @@
 */
 
 
-            #box0
+            .box0
             {
                 vertical-align:middle;
-                border:6; width:650; border-style:ridge; border-color:#669900;  
+                border:6; width:675; border-style:ridge; border-color:#669900;  
                 text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
                 margin:0 auto;
             }
-            #box1
+            .box1
             {
                 vertical-align:middle;
                 border:6; width:500; border-style:ridge; border-color:#669900;  
                 text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
                 margin:0 auto;
             }
-            #box2
+            .box2
             {
                 vertical-align:middle;
                 border:3;
@@ -28,19 +28,46 @@
                 text-align:center;  padding-bottom:13; padding-top:3; padding-left:120; padding-right:120; 
                 margin:0 auto;   
             }
-            #box3
+            .box3
             {
                 border:3;
                 width:50%; border-style:ridge; border-color:#ccff99;  
                 text-align:center;  padding-bottom:1; padding-top:1; padding-left:5; padding-right:5; 
                 margin:0 auto;
             }
-            #info
+            .conversionBox
+            {
+                vertical-align:middle;
+                border:6; width:675; border-style:ridge; border-color:#669900;  
+                text-align:left;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+                margin:0 auto;
+            }
+            .info
             {
                 border:8;
                 font-size:20; color:#003333;
                 text-align:justify;
                 padding-bottom:20; padding-top:20; padding-left:20; padding-right:20; 
+            }
+            ._inputs
+            {
+                 
+                 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
+                 margin-left:5px;
+                 margin-right:10px;
+                 width : 80;
+                 font-size:14
+                 
+            }
+            .dropDown
+            {
+                 
+                 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
+				 margin-bottom:3px;
+                 margin-left:5px;
+                 margin-right:10px;
+                 font-size:14
+                 
             }
             navBar:hover /* can't get this to work yet */
             {

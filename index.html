@@ -10,6 +10,7 @@
         <title>Index</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />   
 		<script type ="text/javascript" src ="modernizr.custom.05819.js"></script>
+        <script type ="text/javascript" src ="myScript.js"></script>
     </head>
     <body style="background-color:#CCFFCC">
         <!-- this part of the Top Title with clovers that change -->
@@ -30,24 +31,51 @@
         <!-- End of navigation bar-->
         <br />
 
-        <div id= "box0" align="center" >
-             <h3 id="info">Welcome world travelers! Luck of the Irish is here to help you. Enjoy all the helpful information about traveling to world sites. </h3>
-            <img  alt="Image of various places" src="images/various.jpg"  height="500px" width="600px"  /></div >
-            <br />
-            <br />
-        <div id="box1" >
+        <div class= "box0" align="center" >
+             <h3 class="info">Welcome world travelers! Luck of the Irish is here to help you. Enjoy all the helpful information about traveling to world sites. </h3>
+            <img  alt="Image of various places" src="images/various.jpg"  height="550px" width="650px"  />
+        </div >
+           <br />
+        <div class= "conversionBox" align="center" >
+             <h3 id="H1">Traveling to Europe? Make sure you know the metric conversions.</h3>
+             <select  class="dropDown" id="selectTypeLength" style="width:160">
+                <option value="yards">yards to meters</option>
+                <option value="meters">meters to yards</option>
+             </select>
+             <b Style="padding-right:29">Yards:  </b><input class= "_inputs" id="inYards" type="text" name="yards" value="0" maxlength=5>
+             <b Style="padding-right:2" >Meters: </b><input class= "_inputs" id="inMeters" type="text" name="meter" value="0" maxlength=5>
+             <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Length" onclick="convertLength()">
+             
+             <select  class="dropDown" id="selectTypeWeight" style="width:160">
+                <option value="pounds">pounds to kilos</option>
+                <option value="kilos">kilos to pounds</option>
+             </select>
+             <b Style="padding-right:20">Pounds:  </b><input class= "_inputs" id="inPounds" type="text" name="pounds" value="0" maxlength=5>
+             <b Style="padding-right:15" >Kilos: </b><input class= "_inputs" id="inKilos" type="text" name="kilo" value="0" maxlength=5>
+             <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Weight" onclick="convertWeight()">
+             
+             <select  class="dropDown" id="selectTemperature" style="width:160">
+                <option value="_F">Fahrenheit to Celsius</option>
+                <option value="_C">Celsius to Fahrenheit</option>
+             </select>
+             <b>Fahrenheit:</b><input class= "_inputs" id="f_temp" type="text" name="_f" value="0" maxlength=5>
+             <b>Celsius: </b><input class= "_inputs" id="c_temp" type="text" name="_c" value="0" maxlength=5>
+             <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Temperature" onclick="convertTemp()">
+        </div >
+           <br />
+        <div class="box1" >
           <h2 >Travel Warning Links: </h2>
           <fieldset id="list">
-            <!--<legend>Dropoff date</legend>-->
             <h3 > Select a country for U.S. state department information</h3>
             <select id= "country">
               <option value="Europe">Europe</option>
-              <option value="Middle East">Middle East</option>
+              <option value="MiddleEast">Middle East</option>
               <option value="Africa">Africa</option>
-              <option value="South Asia">South Asia</option>
-              <option value="Central Asia">Central Asia</option>
+              <option value="SouthAsia">South Asia</option>
+              <option value="CentralAsia">Central Asia</option>
             </select>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onclick="createHLink()" />
+			<br/>
           </fieldset>
            
 

@@ -7,9 +7,8 @@
 
 */
 
-//global var
-//int temperature = 0;
 
+// function converts pounds to kilos or kilos to pounds
 function convertWeight() {
     var name = document.getElementById("selectTypeWeight").value; // determine value of selection
 
@@ -25,6 +24,7 @@ function convertWeight() {
     }
 }
 
+//function converts yards to meters or meters to yards
 function convertLength() {
      var name = document.getElementById("selectTypeLength").value; // determine value of selection
 
@@ -40,24 +40,26 @@ function convertLength() {
      }
 }
 
+//function converts celsius to Fahrenheit or Fahrenheit to celsius
 function convertTemp() {
      var name = document.getElementById("selectTemperature").value; // determine value of selection
      if (name == "_F") {
          var fahr = document.getElementById("f_temp").value; //get yards
-         document.getElementById("c_temp").value = ((fahr-32) *(5.0/9.0)).toFixed(2); //display meters
+         document.getElementById("c_temp").value = ((fahr-32) *(5.0/9.0)).toFixed(2); //display Cel Temperature
      }
      else {
          var celi = document.getElementById("c_temp").value; //get meters
-         document.getElementById("f_temp").value = (celi * (9.0/5.0) + 32).toFixed(2); //display yards
+         document.getElementById("f_temp").value = (celi * (9.0/5.0) + 32).toFixed(2); //display Fahr Temperature
      }
 }
 
+// this function will get the added country selected by user and add it to the state dept link, then redirect window
 function createHLink (){
 	var yourElement = document.getElementById("stateDept");
 	var con =  document.getElementById("country").value
 	var _link = "https://travel.state.gov/content/passports/en/alertswarnings/worldwide-caution.html#" + con;
 	window.location= _link;
-	//yourElement.setAttribute('href', _link);
+
  }
 
 

@@ -56,6 +56,7 @@
                  margin-left:5px;
                  margin-right:10px;
                  width : 80;
+                 height: 25;
                  font-size:14
                  
             }
@@ -74,15 +75,51 @@
                 background-color:#33ff99;
                 color:Green               
             }
+            .title
+            {
+                text-align:center;
+                font-family:Old English Text MT; 
+                text-shadow: 4px 4px 4px #aaa;
+                font-size:60; 
+                color:#669900;
+            }
   
   
-  fieldset 
-  {
-  margin-top: 15px;
-  margin-bottom: 5px;
-  background: #93AD78;
-  text-align:center;
-  }
+          fieldset 
+          {
+              margin-top: 1px;
+              margin-bottom: 1px;
+              background: #93AD78;
+              text-align:center;
+          }
+  
+         /* animate title to swing, found on w3schools */
+         .divSpecl {  
+           display:inline;
+           position :relative;
+           -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+           animation: mymove 5s infinite;
+        }
+
+        /* Chrome, Safari, Opera */
+        @-webkit-keyframes mymove {
+            0%   {left: -75px;}
+            25%  {left: 75px;}
+            75%  {left: 25px}
+            100% {left: 50px;}
+            100% {left: -75px;}
+        }
+
+        /* Standard syntax */
+        @keyframes mymove 
+        {
+            
+            0%   {left: -75px;}
+            25%  {left: 75px;}
+            75%  {left: 25px}
+            100% {left: 50px;}
+            100% {left: -75px;}
+        }
   
 
 /* form  /// this other data from book, not being used yet.

@@ -54,12 +54,15 @@ function convertTemp() {
 }
 
 // this function will get the added country selected by user and add it to the state dept link, then redirect window
-function createHLink (){
+function createHLink() {
+    document.getElementById("pWait").innerHTML = "Loading Website, Please wait";
 	var yourElement = document.getElementById("stateDept");
 	var con =  document.getElementById("country").value
 	var _link = "https://travel.state.gov/content/passports/en/alertswarnings/worldwide-caution.html#" + con;
 	window.location= _link;
 
  }
+
+
 
 

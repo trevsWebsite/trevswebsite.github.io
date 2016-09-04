@@ -3,22 +3,26 @@
 <!--
 
 		Trevor Kelley 2020267 CIS166 
-		Project 2
-		9/2/16
+		Project 1
+		8/22/16
 -->
     <head>
         <title>Index</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />   
 		<script type ="text/javascript" src ="modernizr.custom.05819.js"></script>
         <script type ="text/javascript" src ="myScript.js"></script>
+        <style></style>
     </head>
+    
     <body style="background-color:#CCFFCC">
         <!-- this part of the Top Title with clovers that change -->
-        <h1  style="text-align:center;font-family:Brush Script MT; font-size:60; color:#669900" >
+        <div class=divSpecl>
+        <h1 class=title >
             <img  alt="left clover leaf" src="images/leftClover.jpeg"  height="75px" width="75px" onmouseover="src='images/leftClover2.jpg'" onmouseout="src='images/leftClover.jpeg'" />
             Luck of the Irish Travel Info <!-- Title, company name -->
             <img  alt="right clover leaf" src="images/rightClover.jpg"  height="75px" width="75px" onmouseover="src='images/rightClover3.jpg'" onmouseout="src='images/rightClover.jpg'" />
-        </h1>    
+        </h1>  
+        </div> 
         <!-- Start of navigation bar  -->
         <h3 style="text-align:center; word-spacing:50">
             <a  type="navBar" style="color:#006633" href="index.html">HOME</a> 
@@ -42,7 +46,7 @@
                 <option value="yards">yards to meters</option>
                 <option value="meters">meters to yards</option>
              </select>
-             <b Style="padding-right:29">Yards:  </b><input class= "_inputs" id="inYards" type="text" name="yards" value="0" maxlength=5>
+             <b Style="padding-right:31">Yards:  </b><input class= "_inputs" id="inYards" type="text" name="yards" value="0" maxlength=5>
              <b Style="padding-right:2" >Meters: </b><input class= "_inputs" id="inMeters" type="text" name="meter" value="0" maxlength=5>
              <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Length" onclick="convertLength()">
              
@@ -65,32 +69,25 @@
            <br />
         <div class="box1" >
           <h2 >Travel Warning Links: </h2>
-          <fieldset id="list">
             <h3 > Select a country for U.S. state department information</h3>
-            <select id= "country">
+            <select class="dropDown" id= "country">
               <option value="Europe">Europe</option>
               <option value="MiddleEast">Middle East</option>
               <option value="Africa">Africa</option>
               <option value="SouthAsia">South Asia</option>
               <option value="CentralAsia">Central Asia</option>
             </select>
-            <input type="submit" value="Submit" onclick="createHLink()" />
-			<br/>
-          </fieldset>
-           
-
-            <!--Use part of this link later <a href="https://travel.state.gov/content/passports/en/alertswarnings/worldwide-caution.html#Europe" style="font-family:Verdana;"> US State Department </a><br /> -->
-             <h3 > Other Links:</h3>   
+            <input  class="_inputs" type="submit" value="Submit" onclick="createHLink()" >
+            <a id="pWait" style="color:Blue" ></a><!-- this will put a "please wait message" when submit is clicked-->
+            <h3 > Other Links:</h3>   
             <a href="https://travel.gc.ca/travelling/advisories" style="font-family:Verdana;">Gouvernment Du Canada </a> <br />
-
-
         </div>
         <br />
         <br />
         <h4 style="text-align:center"> <a href="mailto:WebMaster@Kelley.net?subject=Comments">Contact Webmaster</a>  
         </h4 >
         <br />
-        <h5 style="text-align:center"> Copyright 2016 by Trevor Kelley (9/4) </h5>
+        <h5 style="text-align:center"> Copyright <i>2016</i> by <i>Trevor Kelley</i> </h5>
         <br />
         <br />
 

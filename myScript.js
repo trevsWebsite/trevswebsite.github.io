@@ -8,6 +8,8 @@
 */
 
 
+
+
 // function converts pounds to kilos or kilos to pounds
 function convertWeight() {
     var name = document.getElementById("selectTypeWeight").value; // determine value of selection
@@ -15,11 +17,15 @@ function convertWeight() {
     if (name == "pounds") { 
         kilo = 0.453592;
         var pnds = document.getElementById("inPounds").value; // get pounds
+        if (isNaN(pnds))
+            window.alert("Entry invalid, please enter a number");
         document.getElementById("inKilos").value = (pnds * kilo).toFixed(2); // display kilos
     }
     else {
         pnd = 2.20465;
         var kilos = document.getElementById("inKilos").value; // get kilos
+        if (isNaN(kilos))
+            window.alert("Entry invalid, please enter a number");
         document.getElementById("inPounds").value = (pnd * kilos).toFixed(2); //display pounds
     }
 }
@@ -31,11 +37,15 @@ function convertLength() {
      if (name == "yards") {
          meter = 0.9144;
          var yards = document.getElementById("inYards").value; //get yards
+         if (isNaN(yards))
+             window.alert("Entry invalid, please enter a number");
          document.getElementById("inMeters").value = (yards * meter).toFixed(2); //display meters
      }
      else {
          yard = 1.09361;
          var meters = document.getElementById("inMeters").value; //get meters
+         if (isNaN(meters))
+             window.alert("Entry invalid, please enter a number");
          document.getElementById("inYards").value = (yard * meters).toFixed(2); //display yards
      }
 }
@@ -45,10 +55,14 @@ function convertTemp() {
      var name = document.getElementById("selectTemperature").value; // determine value of selection
      if (name == "_F") {
          var fahr = document.getElementById("f_temp").value; //get yards
+         if (isNaN(fahr))
+             window.alert("Entry invalid, please enter a number");
          document.getElementById("c_temp").value = ((fahr-32) *(5.0/9.0)).toFixed(2); //display Cel Temperature
      }
      else {
          var celi = document.getElementById("c_temp").value; //get meters
+         if (isNaN(celi))
+             window.alert("Entry invalid, please enter a number");
          document.getElementById("f_temp").value = (celi * (9.0/5.0) + 32).toFixed(2); //display Fahr Temperature
      }
 }

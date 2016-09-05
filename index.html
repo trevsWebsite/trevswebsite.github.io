@@ -14,7 +14,8 @@
         <style></style>
     </head>
     
-    <body style="background-color:#CCFFCC">
+    <body style="background-color:#CCFFCC" >
+   
         <!-- this part of the Top Title with clovers that change -->
         <div class=divSpecl>
         <h1 class=title >
@@ -37,35 +38,37 @@
 
         <div class= "box0" align="center" >
              <h3 class="info">Welcome world travelers! Luck of the Irish is here to help you. Enjoy all the helpful information about traveling to world sites. </h3>
-            <img  alt="Image of various places" src="images/various.jpg"  height="550px" width="650px"  />
+            <img  alt="Image of various places" src="images/various.jpg"  height="525px" width="625px"  />
         </div >
            <br />
-        <div class= "conversionBox" align="center" >
-             <h3 id="H1">Traveling to Europe? Make sure you know the metric conversions.</h3>
-             <select  class="dropDown" id="selectTypeLength" style="width:160">
-                <option value="yards">yards to meters</option>
-                <option value="meters">meters to yards</option>
-             </select>
-             <b Style="padding-right:31">Yards:  </b><input class= "_inputs" id="inYards" type="text" name="yards" value="0" maxlength=5>
-             <b Style="padding-right:2" >Meters: </b><input class= "_inputs" id="inMeters" type="text" name="meter" value="0" maxlength=5>
-             <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Length" onclick="convertLength()">
+
+            <div class= "conversionBox" align="center" >
+                 <h3 id="H1">Traveling to Europe? Make sure you know the metric conversions.</h3>
+                 <select  class="dropDown" id="selectTypeLength" style="width:160">
+                    <option value="yards">yards to meters</option>
+                    <option value="meters">meters to yards</option>
+                 </select>
+                 <b Style="padding-right:31">Yards:  </b><input class= "_inputs" id="inYards" type="text" name="yards" value="0" maxlength=5>
+                 <b Style="padding-right:2" >Meters: </b><input class= "_inputs" id="inMeters" type="text" name="meter" value="0" maxlength=5>
+                 <input class= "buttons" style="padding: 1; width:120" type="submit" value="Get Length" onclick="convertLength()">
              
-             <select  class="dropDown" id="selectTypeWeight" style="width:160">
-                <option value="pounds">pounds to kilos</option>
-                <option value="kilos">kilos to pounds</option>
-             </select>
-             <b Style="padding-right:20">Pounds:  </b><input class= "_inputs" id="inPounds" type="text" name="pounds" value="0" maxlength=5>
-             <b Style="padding-right:15" >Kilos: </b><input class= "_inputs" id="inKilos" type="text" name="kilo" value="0" maxlength=5>
-             <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Weight" onclick="convertWeight()">
+                 <select  class="dropDown" id="selectTypeWeight" style="width:160">
+                    <option value="pounds">pounds to kilos</option>
+                    <option value="kilos">kilos to pounds</option>
+                 </select>
+                 <b Style="padding-right:20">Pounds:  </b><input class= "_inputs" id="inPounds" type="text" name="pounds" value="0" maxlength=5>
+                 <b Style="padding-right:15" >Kilos: </b><input class= "_inputs" id="inKilos" type="text" name="kilo" value="0" maxlength=5>
+                 <input class= "buttons" style="padding: 1; width:120" type="submit" value="Get Weight" onclick="convertWeight()">
              
-             <select  class="dropDown" id="selectTemperature" style="width:160">
-                <option value="_F">Fahrenheit to Celsius</option>
-                <option value="_C">Celsius to Fahrenheit</option>
-             </select>
-             <b>Fahrenheit:</b><input class= "_inputs" id="f_temp" type="text" name="_f" value="0" maxlength=5>
-             <b>Celsius: </b><input class= "_inputs" id="c_temp" type="text" name="_c" value="0" maxlength=5>
-             <input class= "_inputs" style="padding: 1; width:120" type="submit" value="Get Temperature" onclick="convertTemp()">
-        </div >
+                 <select  class="dropDown" id="selectTemperature" style="width:160">
+                    <option value="_F">Fahrenheit to Celsius</option>
+                    <option value="_C">Celsius to Fahrenheit</option>
+                 </select>
+                 <b>Fahrenheit:</b><input class= "_inputs" id="f_temp" type="text" name="_f" value="0" maxlength=5>
+                 <b>Celsius: </b><input class= "_inputs" id="c_temp" type="text" name="_c" value="0" maxlength=5>
+                 <input class= "buttons" style="padding: 1; width:120" type="submit" value="Get Temperature" onclick="convertTemp()">
+            </div >
+
            <br />
         <div class="box1" >
           <h2 >Travel Warning Links: </h2>
@@ -77,7 +80,7 @@
               <option value="SouthAsia">South Asia</option>
               <option value="CentralAsia">Central Asia</option>
             </select>
-            <input  class="_inputs" type="submit" value="Submit" onclick="createHLink()" >
+            <input  class="buttons" type="submit" value="Submit" onclick="createHLink()" >
             <a id="pWait" style="color:Blue" ></a><!-- this will put a "please wait message" when submit is clicked-->
             <h3 > Other Links:</h3>   
             <a href="https://travel.gc.ca/travelling/advisories" style="font-family:Verdana;">Gouvernment Du Canada </a> <br />

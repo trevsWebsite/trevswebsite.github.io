@@ -6,9 +6,22 @@
         JavaScript file : MyScript.js
 
 */
-
-
-
+    var mainPic= 0;  //mainPage pic index
+	
+	var pics = ['images/at_stPeter.jpg', 
+				'images/britGallery.jpg', 
+				'images/cityHall.jpg',
+				'images/britMuse.jpg',
+				'images/dali.jpg',
+				'images/stairs.jpg',
+				'images/norteDame.jpg',
+				'images/munPalace.jpg',
+				'images/DSC_0059.jpg',
+				'images/DSC_0265.jpg',
+				'images/DSC_0406.jpg',
+				'images/DSC_0530.jpg',				
+				'images/val1.jpg',
+				'images/val2.jpg'];
 
 // function converts pounds to kilos or kilos to pounds
 function convertWeight() {
@@ -75,7 +88,21 @@ function createHLink() {
 	var _link = "https://travel.state.gov/content/passports/en/alertswarnings/worldwide-caution.html#" + con;
 	window.location= _link;
 
- }
+}
+
+// change to random pic when clicked on main pic on index page
+(function () 
+{   window.addEventListener("click", function()
+    {  
+		 document.getElementById("varImage").src = pics[mainPic];  //change src
+		 //document.getElementById("rand").innerHTML = mainPic; troubleshoot
+		 mainPic++;
+		 if(mainPic > 13)
+			 mainPic=0;
+		 
+    });
+})();
+
 
 
 

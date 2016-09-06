@@ -26,11 +26,11 @@
         </div> 
         <!-- Start of navigation bar  -->
         <h3 style="text-align:center; word-spacing:50">
-            <a  type="navBar" style="color:#006633" href="index.html">HOME</a> 
-            <a  type="navBar" style="color:#006633" href="roma.html">ROMA</a> 
-            <a  type="navBar" style="color:#006633" href="munich.html">MÜNCHEN</a>
-            <a  type="navBar" style="color:#006633" href="paris.html">PARIS</a>
-			<a  type="navBar" style="color:#006633" href="london.html">LONDON</a>
+            <a  class="navBar"  href="index.html">HOME</a> 
+            <a  class="navBar"  href="roma.html">ROMA</a> 
+            <a  class="navBar"  href="munich.html">MÜNCHEN</a>
+            <a  class="navBar"  href="paris.html">PARIS</a>
+			<a  class="navBar"  href="london.html">LONDON</a>
 		</h3>
         <br />
         <!-- End of navigation bar-->
@@ -38,12 +38,13 @@
 
         <div class= "box0" align="center" >
              <h3 class="info">Welcome world travelers! Luck of the Irish is here to help you. Enjoy all the helpful information about traveling to world sites. </h3>
-            <img  alt="Image of various places" src="images/various.jpg"  height="525px" width="625px"  />
+            <img  id="varImage" alt="Image of various places" src="images/various.jpg"  />
+			<p id="rand"></p>
         </div >
            <br />
 
             <div class= "conversionBox" align="center" >
-                 <h3 id="H1">Traveling to Europe? Make sure you know the metric conversions.</h3>
+                 <h3 id="H1" style="text-align:center">Traveling to Europe? Make sure you know the metric conversions.</h3>
                  <select  class="dropDown" id="selectTypeLength" style="width:160">
                     <option value="yards">yards to meters</option>
                     <option value="meters">meters to yards</option>
@@ -72,7 +73,7 @@
            <br />
         <div class="box1" >
           <h2 >Travel Warning Links: </h2>
-            <h3 > Select a country for U.S. state department information</h3>
+            <h3 style="text-align:center" > Select a country for U.S. state department information</h3>
             <select class="dropDown" id= "country">
               <option value="Europe">Europe</option>
               <option value="MiddleEast">Middle East</option>

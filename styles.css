@@ -6,117 +6,127 @@
 */
 
 
-            .box0
-            {
-                background-image:url(images/pattern.jpg);
-                vertical-align:middle;
-                border:6; width:675; border-style:ridge; border-color:#669900;  
-                text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
-                margin:0 auto;
-            }
-            .box1
-            {
-                vertical-align:middle;
-                border:6; width:500; border-style:ridge; border-color:#669900;  
-                text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
-                margin:0 auto;
-            }
-            .box2
-            {
-                vertical-align:middle;
-                border:3;
-                width:70%; border-style:ridge; border-color:#ccff99;  
-                text-align:center;  padding-bottom:15%; padding-top:3; padding-left:120; padding-right:120; 
-                margin:0 auto;   
-            }
-            .box3
-            {
-                border:3;
-                width:50%; border-style:ridge; border-color:#ccff99;  
-                text-align:center;  padding-bottom:1; padding-top:1; padding-left:5; padding-right:5; 
-                margin:0 auto;
-            }
-            .conversionBox
-            {
-                vertical-align:middle;
-                border:6; width:675; border-style:ridge; border-color:#669900;  
-                text-align:left;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
-                margin:0 auto;
-            }
-            .info
-            {
-                border:8;
-                font-size:20; color:#003333;
-                text-align:center;
-                margin-left:25px;  margin-right:25px;
-                padding-bottom:7; padding-top:7; padding-left:15; padding-right:15; 
-                background-color:#CCFFCC
-            }
-            ._inputs
-            {
-                 
-                 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
-                 margin-left:5px;
-                 margin-right:10px;
-                 width : 80;
-                 height: 25;
-                 font-size:14
-                 
-            }
-            .buttons
-            {
-                padding: 1px 1px 1px 1px;
-                font-size:14
-            }
-            
-            .dropDown
-            {
-                 
-                 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
-				 margin-bottom:3px;
-                 margin-left:5px;
-                 margin-right:10px;
-                 font-size:14
-                 
-            }
-            navBar:hover /* can't get this to work yet */
-            {
-                background-color:#33ff99;
-                color:Green               
-            }
-            .title
-            {
-                text-align:center;
-                font-family:Old English Text MT; 
-                text-shadow: 4px 4px 4px #aaa;
-                font-size:60; 
-                color:#669900;
-            }
-            .float-left 
-            {
-                float:left;
-                width:33%; 
-            }
-  
-  
-          fieldset 
-          {
-              margin-top: 1px;
-              margin-bottom: 1px;
-              background: #93AD78;
-              text-align:center;
-          }
-  
-         /* animate title to swing, found on w3schools */
-         .divSpecl {  
-           display:inline;
-           position :relative;
-           -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
-           animation: mymove 5s infinite;
+		.box0
+		{
+			background-image:url(images/pattern.jpg);
+			vertical-align:middle;
+			border:6; width:90%; border-style:ridge; border-color:#669900;  
+			text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+			margin:0 auto;
+		}
+		.box1
+		{
+			vertical-align:middle;
+			border:6; width:500; border-style:ridge; border-color:#669900;  
+			text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+			margin:0 auto;
+		}
+		.box2
+		{
+			vertical-align:middle;
+			border:3;
+			width:70%; border-style:ridge; border-color:#ccff99;  
+			text-align:center;  padding-bottom:15%; padding-top:3; padding-left:120; padding-right:120; 
+			margin:0 auto;   
+		}
+		.box3
+		{
+			border:3;
+			width:50%; border-style:ridge; border-color:#ccff99;  
+			text-align:center;  padding-bottom:1; padding-top:1; padding-left:5; padding-right:5; 
+			margin:0 auto;
+		}
+		.conversionBox
+		{
+			vertical-align:middle;
+			border:6; width:675; border-style:ridge; border-color:#669900;  
+			text-align:left;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+			margin:0 auto;
+		}
+		.info
+		{
+			border:8;
+			font-size:20; color:#003333;
+			text-align:center;
+			margin-left:25px;  margin-right:25px;
+			padding-bottom:7; padding-top:7; padding-left:15; padding-right:15; 
+			background-color:#CCFFCC
+		}
+		._inputs
+		{		 
+			 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
+			 margin-left:5px;
+			 margin-right:10px;
+			 width : 80;
+			 height: 25;
+			 font-size:14			 
+		}
+		.buttons
+		{
+			padding: 1px 1px 1px 1px;
+			font-size:14
+		}
+		
+		.dropDown
+		{		 
+			 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
+			 margin-bottom:3px;
+			 margin-left:5px;
+			 margin-right:10px;
+			 font-size:14		 
+		}
+		.navBar
+		{	   
+			color:#BFE32C;
+			-webkit-animation-name: changeColor; 
+			-webkit-animation-duration: 4s; 
+			animation-name: changeColor;
+			animation-duration: 4s ;
+			animation-iteration-count: infinite;  
+		}
+		.title
+		{
+			text-align:center;
+			font-family:Old English Text MT; 
+			text-shadow: 4px 4px 4px #aaa;
+			font-size:60; 
+			color:#669900;
+		} 
+		.float-left 
+		{
+			float:left;
+			width:33%; 
+		}
+	    fieldset 
+	    {
+		  margin-top: 1px;
+		  margin-bottom: 1px;
+		  background: #93AD78;
+		  text-align:center;
+	    }
+
+	    /* animate title to swing, found on w3schools */
+	    .divSpecl {  
+			display:inline;
+			position :relative;
+			-webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+			animation: mymove 5s infinite;
+        }
+        
+		/* allows headers to fade color */
+        .headers
+        {
+            color:#BFE32C;
+            -webkit-animation-name: changeColor; 
+            -webkit-animation-duration: 4s; 
+            animation-name: changeColor;
+            animation-duration: 4s ;
+            animation-iteration-count: infinite;
         }
 
         /* Chrome, Safari, Opera */
-        @-webkit-keyframes mymove {
+        @-webkit-keyframes mymove 
+        {
             0%   {left: -75px;}
             25%  {left: 75px;}
             75%  {left: 25px}
@@ -126,80 +136,17 @@
 
         /* Standard syntax */
         @keyframes mymove 
-        {
-            
+        {         
             0%   {left: -75px;}
             25%  {left: 75px;}
             75%  {left: 25px}
             100% {left: 50px;}
             100% {left: -75px;}
         }
-  
+        @keyframes changeColor {
+            from {color: #25fa01;}
+            to { color: #55864c;}
+        }
+        
 
-/* form  /// this other data from book, not being used yet.
 
-
-
-fieldset fieldset {
-  padding-top: 5px;
-  border: 2px solid #082008;
-  }
-form {
-  background: #082008;
-  padding: 10px 5px 7px 5px;
-  margin: 0 auto;
-  width: 750px;
-  }
-input, textarea {
-  font-size: 1em;
-  }
-input:focus, textarea:focus {
-  background: #e3d5ba;
-  }
-legend span {
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 1.25em;
-  margin-top: 0.5em;
-  margin-left: 0.5em;
-  }
-textarea {
-  display: block;
-  }
-#checkin {
-  float: left;
-  width: 45%;
-  }
-#checkout {
-  float: right;
-  width: 45%;
-  }
-#contactinfo, #reserveinfo, #submitbutton {
-  border: none;
-  }
-#contactinfo label {
-  display: block;
-  position: relative;
-  margin:  12px 0;
-  }
-#contactinfo input {
-  position: absolute;
-  left: 100px;
-  }
-#nameinput, #emailinput {
-  width: 30em;
-  }
-#phoneinput {
-  width: 12em;
-  }
-#submitbutton {
-  border: none;
-  background: #93AD78;
-  padding: 0.5em 0;
-  margin-bottom: 0;
-  text-align: center;
-  }
-  
-
-  */

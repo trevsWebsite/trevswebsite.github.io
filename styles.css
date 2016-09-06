@@ -1,8 +1,7 @@
 /* 
-		Trevor Kelley 2020267 CIS166 
-		Project 2
-		9/2/16
-        styles.css
+	Trevor Kelley 2020267 CIS166 
+	Project 3
+	9/8/16
 */
 
 
@@ -11,7 +10,7 @@
 			background-image:url(images/pattern.jpg);
 			vertical-align:middle;
 			border:6; width:90%; border-style:ridge; border-color:#669900;  
-			text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+			text-align:center;  padding-bottom:25; padding-top:25; padding-left:5; padding-right:5; 
 			margin:0 auto;
 		}
 		.box1
@@ -23,11 +22,13 @@
 		}
 		.box2
 		{
+		    /*height:80%;*/ 
 			vertical-align:middle;
 			border:3;
-			width:70%; border-style:ridge; border-color:#ccff99;  
-			text-align:center;  padding-bottom:15%; padding-top:3; padding-left:120; padding-right:120; 
-			margin:0 auto;   
+			width:85%; border-style:ridge; border-color:#ccff99;  
+			text-align:center;  padding-bottom:3%; padding-top:3; padding-left:25; padding-right:25; 
+			margin:0 auto; 
+			margin-bottom: 20px;  
 		}
 		.box3
 		{
@@ -92,11 +93,23 @@
 			font-size:60; 
 			color:#669900;
 		} 
-		.float-left 
+		.float-left /* divs for pics in top sites */
 		{
 			float:left;
 			width:33%; 
 		}
+		.float-right /* divs for pics in top sites */
+		{	    
+			float:left;
+			width:33%;
+		}
+		.float-left-Center /* divs for text between images */
+		{
+			float:left;
+			width:33%; 
+			margin-bottom:1px;
+		}
+		
 	    fieldset 
 	    {
 		  margin-top: 1px;
@@ -127,21 +140,36 @@
         /* Chrome, Safari, Opera */
         @-webkit-keyframes mymove 
         {
-            0%   {left: -75px;}
+          /*  0%   {left: -75px;}
             25%  {left: 75px;}
             75%  {left: 25px}
             100% {left: 50px;}
-            100% {left: -75px;}
+            100% {left: -75px;} */
+            
+            /* changed to a little less move */
+            0%   {left: -60px;}
+            25%  {left: 60px;}
+            75%  {left: 5px}
+            100% {left: 20px;}
+            100% {left: -60px;}
         }
 
         /* Standard syntax */
         @keyframes mymove 
         {         
-            0%   {left: -75px;}
+           /* 0%   {left: -75px;}
             25%  {left: 75px;}
             75%  {left: 25px}
             100% {left: 50px;}
             100% {left: -75px;}
+            */
+            
+            /* changed to a little less move */
+            0%   {left: -60px;}
+            25%  {left: 60px;}
+            75%  {left: 5px}
+            100% {left: 20px;}
+            100% {left: -60px;}
         }
         @keyframes changeColor {
             from {color: #25fa01;}

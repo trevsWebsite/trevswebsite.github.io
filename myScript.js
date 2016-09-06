@@ -1,9 +1,9 @@
 ﻿/*
 
-		Trevor Kelley 2020267 CIS166 
-		Project 2
-		9/3/16
-        JavaScript file : MyScript.js
+	Trevor Kelley 2020267 CIS166 
+	Project 2
+	Project 3
+	9/8/16
 
 */
     var mainPic= 0;  //mainPage pic index
@@ -90,6 +90,7 @@ function createHLink() {
 
 }
 
+/*
 // change to random pic when clicked on main pic on index page
 (function () 
 {   window.addEventListener("click", function()
@@ -102,6 +103,7 @@ function createHLink() {
 		 
     });
 })();
+*/
 
 
 

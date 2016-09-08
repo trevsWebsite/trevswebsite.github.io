@@ -21,7 +21,8 @@
 				'images/DSC_0406.jpg',
 				'images/DSC_0530.jpg',				
 				'images/val1.jpg',
-				'images/val2.jpg'];
+				'images/val2.JPG'];
+
 
 // function converts pounds to kilos or kilos to pounds
 function convertWeight() {
@@ -90,20 +91,78 @@ function createHLink() {
 
 }
 
-/*
-// change to random pic when clicked on main pic on index page
-(function () 
-{   window.addEventListener("click", function()
-    {  
-		 document.getElementById("varImage").src = pics[mainPic];  //change src
-		 //document.getElementById("rand").innerHTML = mainPic; troubleshoot
-		 mainPic++;
-		 if(mainPic > 13)
-			 mainPic=0;
-		 
-    });
-})();
-*/
+
+// this function will show/update the title of the Main pic on the index page
+function showMainPicTitle() {
+    var title = "";
+
+    var img = document.getElementById("varImage");
+    var fileName = img.src; // get src file location
+    var pos = fileName.lastIndexOf("/"); // parse to get file name
+    name = fileName.substring(pos + 1);
+    switch (name) { // match file name with Title of picture
+
+        case "at_stPeter.jpg": title = "St. Peter's Altar, Rome, Italy"; 
+            break;
+
+        case "britGallery.jpg": title = "National Gallery, Trafalgar Square, London, England";
+            break;
+
+        case "cityHall.jpg": title = "City Hall, London, England";
+            break;
+
+        case "britMuse.jpg": title = "British Museum, London, England";
+            break;
+
+        case "dali.jpg": title = "Salvador Dalí, Espace Dalí, Paris, France";
+            break;
+
+        case "stairs.jpg": title = "Saint-Étienne-du-Mont, Paris, France";
+            break;
+
+        case "norteDame.jpg": title = "Notre Dame, Paris, France";
+            break;
+
+        case "munPalace.jpg": title = "Munich Residenz, Munich, Germany";
+            break;
+
+        case "DSC_0059.jpg": title = "Arc de Triomphe, Paris, France";
+            break;
+
+        case "DSC_0265.jpg": title = "Louvre, Paris, France";
+            break;
+
+        case "DSC_0406.jpg": title = "Musee Armee, Paris, France";
+            break;
+
+        case "DSC_0530.jpg": title = "Trevi Fountain, Rome, Italy";
+            break;
+
+        case "val1.jpg": title = "Château de Versailles, Versailles, France";
+            break;
+
+        case "val2.JPG": title = "Château de Versailles, Versailles, France";
+            break;
+
+        case "various.jpg": title = "World Places";
+            break;
+
+        default: title = "Don't remember";
+    }
+
+    document.getElementById("picTitle").innerHTML = title;
+}
+
+
+// Change the main picture on the index page when clicked
+function changePic() {
+    document.getElementById("varImage").src = pics[mainPic];  //change src
+    mainPic++;
+    if (mainPic > 13)
+        mainPic = 0;
+    showMainPicTitle() // update title
+}
+
 
 
 

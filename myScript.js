@@ -11,7 +11,7 @@
 	var pics = ['images/at_stPeter.jpg', 
 				'images/britGallery.jpg', 
 				'images/cityHall.jpg',
-				'images/britMuse.jpg',
+				'images/britMuse.JPG',
 				'images/dali.jpg',
 				'images/stairs.jpg',
 				'images/norteDame.jpg',
@@ -111,7 +111,7 @@ function showMainPicTitle() {
         case "cityHall.jpg": title = "City Hall, London, England";
             break;
 
-        case "britMuse.jpg": title = "British Museum, London, England";
+        case "britMuse.JPG": title = "British Museum, London, England";
             break;
 
         case "dali.jpg": title = "Salvador Dalí, Espace Dalí, Paris, France";

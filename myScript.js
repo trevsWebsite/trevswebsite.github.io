@@ -161,7 +161,7 @@ function changePic() {
     mainPic++;
     if (mainPic > 13)
         mainPic = 0;
-    setTimeout(showMainPicTitle(), 200) // update title, add small delay to give time for picutre to load before title changes.
+    setTimeout(showMainPicTitle(), 350) // update title, add small delay to give time for picutre to load before title changes.
 }
 
 

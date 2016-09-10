@@ -9,30 +9,30 @@
 		{
 			background-image:url(images/pattern.jpg);
 			vertical-align:middle;
-			border:6; width:90%; border-style:ridge; border-color:#669900;  
-			text-align:center;  padding-bottom:25; padding-top:25; padding-left:5; padding-right:5; 
+			border:6px; width:90%; border-style:ridge; border-color:#669900;  
+			text-align:center;  padding-bottom:25px; padding-top:25px; padding-left:5px; padding-right:5px; 
 			margin:0 auto;
 		}
 		.box1
 		{
 			vertical-align:middle;
-			border:6; width:500; border-style:ridge; border-color:#669900;  
-			text-align:center;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+			border:6px; width:500; border-style:ridge; border-color:#669900;  
+			text-align:center;  padding-bottom:20px; padding-top:0px; padding-left:5px; padding-right:5px; 
 			margin:0 auto;
 		}
 		.box2
 		{
 		    /*height:80%;*/ 
 			vertical-align:middle;
-			border:3;
+			border:3px;
 			width:85%; border-style:ridge; border-color:#ccff99;  
-			text-align:center;  padding-bottom:3%; padding-top:3; padding-left:25; padding-right:25; 
+			text-align:center;  padding-bottom:3%; padding-top:3px; padding-left:25px; padding-right:25px; 
 			margin:0 auto; 
 			margin-bottom: 20px;  
 		}
 		.box3
 		{
-			border:3;
+			border:3px;
 			width:50%; border-style:ridge; border-color:#ccff99;  
 			text-align:center;  padding-bottom:1; padding-top:1; padding-left:5; padding-right:5; 
 			margin:0 auto;
@@ -40,22 +40,22 @@
 		.conversionBox
 		{
 			vertical-align:middle;
-			border:6; width:675; border-style:ridge; border-color:#669900;  
-			text-align:left;  padding-bottom:20; padding-top:0; padding-left:5; padding-right:5; 
+			border:6px; width:675; border-style:ridge; border-color:#669900;  
+			text-align:left;  padding-bottom:20px; padding-top:0px; padding-left:5px; padding-right:5px; 
 			margin:0 auto;
 		}
 		.info
 		{
-			border:8;
+			border:8px;
 			font-size:20; color:#003333;
 			text-align:center;
 			margin-left:25px;  margin-right:25px;
-			padding-bottom:7; padding-top:7; padding-left:15; padding-right:15; 
+			padding-bottom:7; padding-top:7px; padding-left:15px; padding-right:15px; 
 			background-color:#CCFFCC
 		}
 		._inputs
 		{		 
-			 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
+			 padding-bottom:3px; padding-top:3px; padding-left:1px; padding-right:1px; 
 			 margin-left:5px;
 			 margin-right:10px;
 			 width : 80;
@@ -70,7 +70,7 @@
 		
 		.dropDown
 		{		 
-			 padding-bottom:3; padding-top:3; padding-left:1; padding-right:1; 
+			 padding-bottom:3px; padding-top:3px; padding-left:1px; padding-right:1px; 
 			 margin-bottom:3px;
 			 margin-left:5px;
 			 margin-right:10px;

@@ -157,10 +157,11 @@ function showMainPicTitle() {
 // Change the main picture on the index page when clicked
 function changePic() {
     document.getElementById("varImage").src = pics[mainPic];  //change src
+    
     mainPic++;
     if (mainPic > 13)
         mainPic = 0;
-    showMainPicTitle() // update title
+    setTimeout(showMainPicTitle(), 200) // update title, add small delay to give time for picutre to load before title changes.
 }
 
 

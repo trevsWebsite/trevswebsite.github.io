@@ -6,6 +6,8 @@
 	9/8/16
 
 */
+
+
     var mainPic= 0;  //mainPage pic index
 	
 	var pics = ['images/at_stPeter.jpg', 
@@ -154,7 +156,8 @@ function showMainPicTitle() {
 }
 
 
-// Change the main picture on the index page when clicked
+
+//// Change the main picture on the index page when clicked
 function changePic() {
     document.getElementById("varImage").src = pics[mainPic];  //change src
     
@@ -163,6 +166,7 @@ function changePic() {
         mainPic = 0;
     setTimeout(showMainPicTitle(), 350) // update title, add small delay to give time for picutre to load before title changes.
 }
+
 
 
 

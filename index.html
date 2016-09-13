@@ -3,18 +3,18 @@
 <!--
 
 	Trevor Kelley 2020267 CIS166 
-	Project 3
-	9/8/16
+	Project 4
+	9/11/16
 -->
     <head>
         <title>Index</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />   
 		<script type ="text/javascript" src ="modernizr.custom.05819.js"></script>
-        <script type ="text/javascript" src ="myScript.js"></script>
+        
     </head>
     
     <body style="background-color:#CCFFCC" >
-   
+        <script type ="text/javascript" src ="myScript.js"></script>
         <!-- this part of the Top Title with clovers that change -->
         <div class=divSpecl>
         <h1 class=title >
@@ -39,10 +39,6 @@
         <div class= "box0" align="center" >
             <p></p> 
             <a  onmouseover="showMainPicTitle()" ><img id="varImage" alt="Image of various places" src="images/various.jpg" height="650px" width="800"  /></a>
-            <script>                
-                var mainImage = document.getElementById("varImage");
-                mainImage.addEventListener("click", changePic, false);
-            </script>
 			<h2 id="picTitle">World Places</h2>
         </div >
            <br />
@@ -73,12 +69,30 @@
                  <b>Celsius: </b><input class= "_inputs" id="c_temp" type="text" name="_c" value="0" maxlength=5>
                  <input class= "buttons" style="padding: 1; width:120" type="submit" value="Get Temperature" onclick="convertTemp()">
             </div >
-
            <br />
-        <div class="box1" >
-          <h2 >Travel Warning Links: </h2>
+       <div style="height:50%" >
+       <div class="box1A" >
+          <form style="margin-top:10px">
+              First name:<br>
+              <input type="text" name="firstname" value="" maxlength="25" size="26">
+              <br>
+              Last name:<br>
+              <input type="text" name="lastname" value="" maxlength="25" size="26">
+              <br>
+              Phone Number: (No Hyphens) <br>
+              <input type="text" name="phone" value="" maxlength="15" size="16">
+              <br>
+              Zip Code:<br>
+              <input type="text" name="zip" value="" maxlength="5" size="6">
+              <br>
+              <input class="buttons" type="submit" value="Submit" style="margin-top:10px" onclick="checkFormat()">
+              <br>
+              <p id="errorMessage" style="font-size:large; color:Red"></p> <!-- place for error message -->
+          </form> 
+       </div>
+       <div class="box1A" ><h2 >Travel Warning Links: </h2>
             <h3 style="text-align:center" > Select a country for U.S. state department information</h3>
-            <select class="dropDown" id= "country">
+            <select class="dropDown" id= "Select1">
               <option value="Europe">Europe</option>
               <option value="MiddleEast">Middle East</option>
               <option value="Africa">Africa</option>
@@ -86,10 +100,13 @@
               <option value="CentralAsia">Central Asia</option>
             </select>
             <input  class="buttons" type="submit" value="Submit" onclick="createHLink()" >
-            <a id="pWait" style="color:Blue" ></a><!-- this will put a "please wait message" when submit is clicked-->
+            <a id="A1" style="color:Blue" ></a><!-- this will put a "please wait message" when submit is clicked-->
             <h3 > Other Links:</h3>   
-            <a href="https://travel.gc.ca/travelling/advisories" style="font-family:Verdana;">Gouvernment Du Canada </a> <br />
-        </div>
+            <a href="https://travel.gc.ca/travelling/advisories" style="font-family:Verdana;">Gouvernment Du Canada </a> <br /></div>
+       <div class="box1A" ><p>(future)</p></div>
+       </div>
+       <br />
+       <br />
         <br />
         <br />
         <h4 style="text-align:center"> <a href="mailto:WebMaster@Kelley.net?subject=Comments">Contact Webmaster</a>  

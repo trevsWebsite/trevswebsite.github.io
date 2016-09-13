@@ -1,9 +1,8 @@
 ﻿/*
 
 	Trevor Kelley 2020267 CIS166 
-	Project 2
-	Project 3
-	9/8/16
+	Project 4
+	9/11/16
 
 */
 
@@ -155,7 +154,7 @@ function showMainPicTitle() {
     document.getElementById("picTitle").innerHTML = title;
 }
 
-
+var mainImage = document.getElementById("varImage");
 
 //// Change the main picture on the index page when clicked
 function changePic() {
@@ -168,7 +167,48 @@ function changePic() {
 }
 
 
+//function verifyPhone() {  //for next assignment
+//    var phoneOK = false;
 
+//    phField.value = "";
+//	
+//	
+//    // check phone number
+//    try {
+//        if (!(phField.value > 0)) {
+//        throw "Please only enter numbers";
+//        } 
+//    }
+//    catch(message) {
+//        phoneOK  = false;
+//        document.getElementById("errorMessage").innerHTML = message;
+//    }
+//    finally {
+//        honeOK = true;
+//        document.getElementById("errorMessage").innerHTML = "";   
+//    }
+//} 
+
+// create Listeners for Main image on index page.
+function createListeners() {
+    //create event listener for main Pic
+    var mainImage = document.getElementById("varImage");
+    mainImage.addEventListener("click", changePic, false);
+
+
+}
+
+// call functions on Load
+try {
+    if (window.addEventListener) {
+        window.addEventListener("load", createListeners, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onload", createListeners);
+    }
+}
+catch (message) {
+    getElementById("error").innerHTML = "There is an error on this page, " + message + ", please notify the webmaster";
+}
 
 
 

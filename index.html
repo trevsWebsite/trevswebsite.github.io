@@ -73,22 +73,29 @@
        <div style="height:50%" >
        <div class="box1A" >
           <form style="margin-top:10px">
-              First name:<br>
-              <input type="text" name="firstname" value="" maxlength="25" size="26">
-              <br>
-              Last name:<br>
-              <input type="text" name="lastname" value="" maxlength="25" size="26">
-              <br>
-              Phone Number: (No Hyphens) <br>
-              <input type="text" name="phone" value="" maxlength="15" size="16">
-              <br>
-              Zip Code:<br>
-              <input type="text" name="zip" value="" maxlength="5" size="6">
-              <br>
-              <input class="buttons" type="submit" value="Submit" style="margin-top:10px" onclick="checkFormat()">
+              <a class="form_inputs"> First name:</a><br>
+              <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)">
+              <a class="errorMark" id="fNameMark"> </a><br><br>
+              <a class="form_inputs">Last name:</a><br>
+              <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)">
+              <a class="errorMark" id="lNameMark"> </a><br><br>
+              <a class="form_inputs">Phone Number: (No Hyphens)</a><br>
+              <input class="form_inputs" type="text" id="phone" value="" maxlength="15" size="16" oninput="verifyData(phone)">
+              <a class="errorMark" id="phoneMark"> </a><br><br>
+              <a class="form_inputs">Zip Code:</a><br>
+              <input class="form_inputs" type="text" id="zip" value="" maxlength="5" size="6" oninput="verifyData(zip)">
+              <a class="errorMark" id="zipMark"> </a>
+              <input  type="submit" value="Submit" Style="float:left; margin-left:15px;" >
               <br>
               <p id="errorMessage" style="font-size:large; color:Red"></p> <!-- place for error message -->
           </form> 
+		  <!--  
+				I used the debugging feature with breakpoints to verify or correct logic in  the switch statement.
+				I used the inspector feature to find and correct some DIV align issues.
+				I clicked on the CSS tab to view and correct CSS style errors.
+				I also used the "watch" feature that allowed me to verify the value of a variable was changing.
+				
+		  -->
        </div>
        <div class="box1A" ><h2 >Travel Warning Links: </h2>
             <h3 style="text-align:center" > Select a country for U.S. state department information</h3>
@@ -107,14 +114,14 @@
        </div>
        <br />
        <br />
-        <br />
-        <br />
-        <h4 style="text-align:center"> <a href="mailto:WebMaster@Kelley.net?subject=Comments">Contact Webmaster</a>  
-        </h4 >
-        <br />
-        <h5 style="text-align:center"> Copyright <i>2016</i> by <i>Trevor Kelley</i> </h5>
-        <br />
-        <br />
+       <br />
+       <br />
+       <h4 style="text-align:center"> <a href="mailto:WebMaster@Kelley.net?subject=Comments">Contact Webmaster</a></h4 >
+       <p id="error"> </p>
+       <br />
+       <h5 style="text-align:center"> Copyright <i>2016</i> by <i>Trevor Kelley</i> </h5>
+       <br />
+       <br />
 
 
 

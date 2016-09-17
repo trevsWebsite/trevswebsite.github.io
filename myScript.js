@@ -7,7 +7,12 @@
 */
 
 
-    var mainPic= 0;  //mainPage pic index
+var mainPic = 0;  //mainPage pic index
+
+var phDataOK = true;
+var zipDataOK = true;
+var lNameDataOK = true;
+var fNameDataOK = true;
 	
 	var pics = ['images/at_stPeter.jpg', 
 				'images/britGallery.jpg', 
@@ -167,33 +172,108 @@ function changePic() {
 }
 
 
-//function verifyPhone() {  //for next assignment
-//    var phoneOK = false;
+// check phone zip code non-numbers or name for numbers
+function verifyData(data) {
 
-//    phField.value = "";
-//	
-//	
-//    // check phone number
-//    try {
-//        if (!(phField.value > 0)) {
-//        throw "Please only enter numbers";
-//        } 
-//    }
-//    catch(message) {
-//        phoneOK  = false;
-//        document.getElementById("errorMessage").innerHTML = message;
-//    }
-//    finally {
-//        honeOK = true;
-//        document.getElementById("errorMessage").innerHTML = "";   
-//    }
-//} 
+    var nums = /[0-9]/g; //regex for chars and spaces
+    var mess="Please correct the field marked"
+
+    try{
+        switch (data.getAttribute("id")) 
+        {
+            case "zip": //verify is a number
+                if (!(data.value > 0)) {
+                    zipDataOK = false;
+                    throw mess;
+                }
+                else
+				{
+                    zipDataOK = true;
+				}
+                break;
+            case "phone": //verify is a number
+                if (!(data.value > 0)) {
+                    phDataOK = false;
+                    throw mess;
+                }
+                else
+				{
+                    phDataOK = true;
+				}
+                break;
+
+            case "lastName": //verify is a letter or space
+                if (data.value.match(nums)) {
+                    lNameDataOK = false;
+                    throw mess;
+                }
+                else
+				{
+					lNameDataOK = true;
+                }
+				break;
+            case "firstName": //verify is a letter or space
+                if (data.value.match(nums)) {
+                    fNameDataOK = false;
+                    throw mess;
+                }
+                else
+				{
+                    fNameDataOK = true;
+				}
+                break; 
+         }
+    }
+    catch (message) {
+        document.getElementById("errorMessage").innerHTML = message;
+    }
+    finally {
+        if (phDataOK && zipDataOK && lNameDataOK && fNameDataOK) {
+            document.getElementById("errorMessage").innerHTML = "";
+        }
+		if(!fNameDataOK)
+			document.getElementById("fNameMark").innerHTML = "*";
+		if(fNameDataOK)
+			document.getElementById("fNameMark").innerHTML = "";
+		if(!lNameDataOK)
+			document.getElementById("lNameMark").innerHTML = "*";
+		if(lNameDataOK)
+			document.getElementById("lNameMark").innerHTML = "";
+		if(!phDataOK)
+			document.getElementById("phoneMark").innerHTML = "*";
+		if(phDataOK)
+			document.getElementById("phoneMark").innerHTML = "";
+		if(!zipDataOK)
+			document.getElementById("zipMark").innerHTML = "*";
+		if(zipDataOK)
+			document.getElementById("zipMark").innerHTML = "";
+    }
+}
 
 // create Listeners for Main image on index page.
 function createListeners() {
+
     //create event listener for main Pic
     var mainImage = document.getElementById("varImage");
     mainImage.addEventListener("click", changePic, false);
+
+
+
+    var ph = document.getElementById("phone");
+    ph.value = "";
+    //ph.addEventListener("load", verifyData(ph), false);
+
+    var zp = document.getElementById("zip");
+    zp.value = "";
+    //zp.addEventListener("load", verifyData(zp), false);
+
+    var ln = document.getElementById("lastName");
+    ln.value = "";
+    //ln.addEventListener("load", verifyData(ln), false);
+
+    var fn = document.getElementById("firstName");
+    fn.value = "";
+    //fn.addEventListener("load", verifyData(fn), false);
 
 
 }

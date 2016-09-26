@@ -9,25 +9,27 @@
 
 var mainPic = 0;  //mainPage pic index
 
+var availWidth = 0;
+
 var phDataOK = true;
 var zipDataOK = true;
 var lNameDataOK = true;
 var fNameDataOK = true;
 	
-	var pics = ['images/at_stPeter.jpg', 
-				'images/britGallery.jpg', 
-				'images/cityHall.jpg',
-				'images/britMuse.JPG',
-				'images/dali.jpg',
-				'images/stairs.jpg',
-				'images/norteDame.jpg',
-				'images/munPalace.jpg',
-				'images/DSC_0059.jpg',
-				'images/DSC_0265.jpg',
-				'images/DSC_0406.jpg',
-				'images/DSC_0530.jpg',				
-				'images/val1.jpg',
-				'images/val2.JPG'];
+var pics = ['images/at_stPeter.jpg', 
+			'images/britGallery.jpg', 
+			'images/cityHall.jpg',
+			'images/britMuse.JPG',
+			'images/dali.jpg',
+			'images/stairs.jpg',
+			'images/norteDame.jpg',
+			'images/munPalace.jpg',
+			'images/DSC_0059.jpg',
+			'images/DSC_0265.jpg',
+			'images/DSC_0406.jpg',
+			'images/DSC_0530.jpg',				
+			'images/val1.jpg',
+			'images/val2.JPG'];
 
 
 // function converts pounds to kilos or kilos to pounds
@@ -89,11 +91,10 @@ function convertTemp() {
 
 // this function will get the added country selected by user and add it to the state dept link, then redirect window
 function createHLink() {
-    document.getElementById("pWait").innerHTML = "Loading Website, Please wait";
-	var yourElement = document.getElementById("stateDept");
 	var con =  document.getElementById("country").value
 	var _link = "https://travel.state.gov/content/passports/en/alertswarnings/worldwide-caution.html#" + con;
-	window.location= _link;
+	//window.location= _link;
+	window.open(_link);
 
 }
 
@@ -168,6 +169,21 @@ function changePic() {
     mainPic++;
     if (mainPic > 13)
         mainPic = 0;
+    setTimeout(showMainPicTitle(), 350) // update title, add small delay to give time for picutre to load before title changes.
+}
+
+function changePic(direction) {
+    
+
+    if (direction.id =="left") 
+        mainPic--;
+    if (direction.id =="right")
+        mainPic++;
+    if (mainPic > 13)
+        mainPic = 0;
+    if (mainPic == -1)
+        mainPic = 13;
+    document.getElementById("varImage").src = pics[mainPic];  //change src
     setTimeout(showMainPicTitle(), 350) // update title, add small delay to give time for picutre to load before title changes.
 }
 
@@ -250,6 +266,53 @@ function verifyData(data) {
     }
 }
 
+function feature(index) {
+    switch (index) {
+        case "online": if(navigator.onLine)
+							document.getElementById("info_online").innerHTML = "Online";
+						else
+							document.getElementById("info_online").innerHTML = "Offline";
+            break;
+        case "platform": document.getElementById("info_plat").innerHTML = navigator.platform;
+            break;
+        case "userA": document.getElementById("info_userA").innerHTML = navigator.userAgent;
+            break;
+        case "appN": document.getElementById("info_appName").innerHTML = navigator.appName;
+            break;
+        case "appV": document.getElementById("info_appVer").innerHTML = navigator.appVersion;
+            break;
+        case "high": document.getElementById("info_high").innerHTML = screen.availHeight;
+            break;
+        case "inHigh": document.getElementById("info_inHigh").innerHTML = window.innerHeight;
+            break;
+        case "width": document.getElementById("info_width").innerHTML = screen.availWidth;
+            break;
+        case "inWidth": document.getElementById("info_inWidth").innerHTML = window.innerWidth;
+            break;
+    }
+}
+
+function clearElement(index) {
+   
+    if(index.includes("width") || index.includes("high"))
+		document.getElementById(index).innerHTML = "&nbsp;";
+	else
+        document.getElementById(index).innerHTML = "";
+}
+
+function alignDivs()
+{
+	availWidth = window.innerWidth; //get available width
+	avgBoxWidth = (availWidth -150) / 8; //get average and set width on divs
+	document.getElementsByClassName("box1B")[0].style.width = avgBoxWidth;
+	document.getElementsByClassName("box1B")[1].style.width = avgBoxWidth;
+	document.getElementsByClassName("box1B")[2].style.width = avgBoxWidth;
+	document.getElementsByClassName("box1B")[3].style.width = avgBoxWidth;
+	document.getElementsByClassName("box1B")[4].style.width = avgBoxWidth;
+	document.getElementsByClassName("box1B")[5].style.width = avgBoxWidth;
+	document.getElementsByClassName("box1B")[6].style.width = avgBoxWidth;
+}
+
 // create Listeners for Main image on index page.
 function createListeners() {
 
@@ -257,7 +320,7 @@ function createListeners() {
     var mainImage = document.getElementById("varImage");
     mainImage.addEventListener("click", changePic, false);
 
-
+    alignDivs();
 
     var ph = document.getElementById("phone");
     ph.value = "";
@@ -278,10 +341,12 @@ function createListeners() {
 
 }
 
+
 // call functions on Load
 try {
     if (window.addEventListener) {
         window.addEventListener("load", createListeners, false);
+		window.addEventListener("resize", alignDivs, false);
     } else if (window.attachEvent) {
         window.attachEvent("onload", createListeners);
     }

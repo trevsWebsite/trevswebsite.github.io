@@ -37,8 +37,10 @@
         
         <h3 class="info">Welcome world travelers! Luck of the Irish is here to help you. Enjoy all the helpful information about traveling to world sites. </h3>
         <div class= "box0" align="center" >
-            <p></p> 
+            <p></p>
+            <a id="left" onclick="changePic(left)"><img id="arrL" alt="arrowLeft" src="images/arrowLeft1.png"</a> 
             <a  onmouseover="showMainPicTitle()" ><img id="varImage" alt="Image of various places" src="images/various.jpg" height="650px" width="800"  /></a>
+            <a id="right" onclick="changePic(right)"><img id="arrR" alt="arrowRigth" src="images/arrowRight1.png"</a> 
 			<h2 id="picTitle">World Places</h2>
         </div >
            <br />
@@ -70,60 +72,92 @@
                  <input class= "buttons" style="padding: 1; width:120" type="submit" value="Get Temperature" onclick="convertTemp()">
             </div >
            <br />
-       <div style="height:50%" >
-       <div class="box1A" >
-          <form style="margin-top:10px">
-              <a class="form_inputs"> First name:</a><br>
-              <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)">
-              <a class="errorMark" id="fNameMark"> </a><br><br>
-              <a class="form_inputs">Last name:</a><br>
-              <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)">
-              <a class="errorMark" id="lNameMark"> </a><br><br>
-              <a class="form_inputs">Phone Number: (No Hyphens)</a><br>
-              <input class="form_inputs" type="text" id="phone" value="" maxlength="15" size="16" oninput="verifyData(phone)">
-              <a class="errorMark" id="phoneMark"> </a><br><br>
-              <a class="form_inputs">Zip Code:</a><br>
-              <input class="form_inputs" type="text" id="zip" value="" maxlength="5" size="6" oninput="verifyData(zip)">
-              <a class="errorMark" id="zipMark"> </a>
-              <input  type="submit" value="Submit" Style="float:left; margin-left:15px;" >
-              <br>
-              <p id="errorMessage" style="font-size:large; color:Red"></p> <!-- place for error message -->
-          </form> 
-		  <!--  
-				I used the debugging feature with breakpoints to verify or correct logic in  the switch statement.
-				I used the inspector feature to find and correct some DIV align issues.
-				I clicked on the CSS tab to view and correct CSS style errors.
-				I also used the "watch" feature that allowed me to verify the value of a variable was changing.
-				
-		  -->
-       </div>
-       <div class="box1A" ><h2 >Travel Warning Links: </h2>
-            <h3 style="text-align:center" > Select a country for U.S. state department information</h3>
-            <select class="dropDown" id= "Select1">
-              <option value="Europe">Europe</option>
-              <option value="MiddleEast">Middle East</option>
-              <option value="Africa">Africa</option>
-              <option value="SouthAsia">South Asia</option>
-              <option value="CentralAsia">Central Asia</option>
-            </select>
-            <input  class="buttons" type="submit" value="Submit" onclick="createHLink()" >
-            <a id="A1" style="color:Blue" ></a><!-- this will put a "please wait message" when submit is clicked-->
-            <h3 > Other Links:</h3>   
-            <a href="https://travel.gc.ca/travelling/advisories" style="font-family:Verdana;">Gouvernment Du Canada </a> <br /></div>
-       <div class="box1A" ><p>(future)</p></div>
-       </div>
-       <br />
-       <br />
-       <br />
-       <br />
-       <h4 style="text-align:center"> <a href="mailto:WebMaster@Kelley.net?subject=Comments">Contact Webmaster</a></h4 >
-       <p id="error"> </p>
-       <br />
-       <h5 style="text-align:center"> Copyright <i>2016</i> by <i>Trevor Kelley</i> </h5>
-       <br />
-       <br />
+       <span style="height:50%; display: inline-block" >
+		   <div class="box1A" >
+			  <form style="margin-top:10px">
+				  <a class="form_inputs"> First name:</a><br>
+				  <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)">
+				  <a class="errorMark" id="fNameMark"> </a><br><br>
+				  <a class="form_inputs">Last name:</a><br>
+				  <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)">
+				  <a class="errorMark" id="lNameMark"> </a><br><br>
+				  <a class="form_inputs">Phone Number: (No Hyphens)</a><br>
+				  <input class="form_inputs" type="text" id="phone" value="" maxlength="15" size="16" oninput="verifyData(phone)">
+				  <a class="errorMark" id="phoneMark"> </a><br><br>
+				  <a class="form_inputs">Zip Code:</a><br>
+				  <input class="form_inputs" type="text" id="zip" value="" maxlength="5" size="6" oninput="verifyData(zip)">
+				  <a class="errorMark" id="zipMark"> </a>
+				  <a ><input  type="submit" value="Submit" Style="float:left; margin-left:15px;" ></a>
+				  <br>
+				  <p id="errorMessage" style="font-size:large; color:Red"></p> <!-- place for error message -->
+			  </form> 
+			  <!--  
+					I used the debugging feature with breakpoints to verify or correct logic in  the switch statement.
+					I used the inspector feature to find and correct some DIV align issues.
+					I clicked on the CSS tab to view and correct CSS style errors.
+					I also used the "watch" feature that allowed me to verify the value of a variable was changing.
+					
+			  -->
+		   </div>
 
 
+			<div class="box1A" ><h2 >Travel Warning Links: </h2>
+				<h3 style="text-align:center" > Select a country for U.S. state department information</h3>
+				<select class="dropDown" id= "country">
+				  <option value="Europe">Europe</option>
+				  <option value="MiddleEast">Middle East</option>
+				  <option value="Africa">Africa</option>
+				  <option value="SouthAsia">South Asia</option>
+				  <option value="CentralAsia">Central Asia</option>
+				</select>
+				<input  class="buttons" type="submit" value="Submit" onclick="createHLink()" >
+				<h3 > Other Links:</h3>   
+				<a href="https://travel.gc.ca/travelling/advisories" target="canWin" style="font-family:Verdana;">Gouvernment Du Canada </a> <br />
+			</div>
+            <div class="box1A" >
+				<p>(future)</p>
+			</div>
+       </span>
 
+       <!--  added boxes to show different methods and properties of Navigator and Screen Objects -->
+       <h3 class="info">Here is information about window properties and
+        methods. Hover over the title to view the setting or property </h3>
+        <div align="center" style="display: inline-block">
+          <div class="box1B"> <a onmouseover="feature('online')"  onmouseout="clearElement('info_online')" > Browser Online Status  </a><h4 id="info_online"></h4></div>
+          <div class="box1B"> <a onmouseover="feature('platform')"  onmouseout="clearElement('info_plat')">Operating System   </a><h4 id="info_plat"></h4></div>
+          <div class="box1B"> <a onmouseover="feature('userA')"  onmouseout="clearElement('info_userA')">User Agent Request Header  </a><h4 id="info_userA"></h4></div>
+          <div class="box1B"> <a onmouseover="feature('appN')"  onmouseout="clearElement('info_appName')">Web Browser in Use  </a><h4 id="info_appName"></h4></div>
+          <div class="box1B"> <a onmouseover="feature('appV')"  onmouseout="clearElement('info_appVer')">Verison of Web Browser</a><h4 id="info_appVer"></h4></div>
+          <div class="box1B"> 
+                <a onmouseover="feature('high')"  onmouseout="clearElement('info_high')">Screen Height </a><h4 id="info_high">&nbsp;</h4>
+                <a onmouseover="feature('inHigh')"  onmouseout="clearElement('info_inHigh')">Web Browser Screen Height </a><h4 id="info_inHigh">&nbsp;</h4>
+          </div>
+          <div class="box1B">
+                <a onmouseover="feature('width')"  onmouseout="clearElement('info_width')">Screen Width  </a><h4 id="info_width">&nbsp;</h4>
+                <a onmouseover="feature('inWidth')"  onmouseout="clearElement('info_inWidth')">Web Browser Screen Width  </a><h4 id="info_inWidth">&nbsp;</h4>
+          </div>
+        </div>
+		<ul>
+			<li><h4>https://software.ncsu.edu/internet-browsing-best-practices</h4> 
+				It’s recommend that you only use trusted sites with valid security certificates, 
+				avoid pornographic websites and be careful when downloading files.
+			<br> <br> 
+			<li><h4>https://support.mozilla.org/en-US/kb/how-stay-safe-web</h4>
+				It is suggested that you keep your operating system, web browser, and plug-ins up-to-date.
+			<br> <br>
+			<li><h4>https://www.getsafeonline.org/protecting-your-computer/safe-internet-use/ </h4>
+				Be wary of website which request more personal information than you would normally give, like username and password.
+			<br> <br>		
+	    </ul>
+        <br />
+        <br />
+        <h4 style="text-align:center"> <a
+        href="mailto:WebMaster@Kelley.net?subject=Comments">Contact
+        Webmaster</a></h4>
+        <p id="error"> </p>
+        <br>
+        <h5 style="text-align:center"> Copyright <i>2016</i> by <i>Trevor Kelley</i> </h5>
+        <br>
+        <br />
     </body>
 </html>

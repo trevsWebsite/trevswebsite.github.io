@@ -293,8 +293,9 @@ function feature(index) {
 }
 
 function clearElement(index) {
-   
-    if(index.contains("width") || index.contains("high"))
+    var hg = /high/; //regex for high
+    var wd = /width/; // regex for width
+    if(index.match(hg) || index.match(wd))
 		document.getElementById(index).innerHTML = "&nbsp;";
 	else
         document.getElementById(index).innerHTML = "";

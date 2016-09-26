@@ -294,7 +294,7 @@ function feature(index) {
 
 function clearElement(index) {
    
-    if(index.includes("width") || index.includes("high"))
+    if(index.contains("width") || index.contains("high"))
 		document.getElementById(index).innerHTML = "&nbsp;";
 	else
         document.getElementById(index).innerHTML = "";

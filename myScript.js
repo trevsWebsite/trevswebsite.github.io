@@ -328,14 +328,18 @@ function validateForm(event) {
         if (!checkRadio())
         { }
         else {
-            if (!checkLength("phone", 9))
+            if (!checkMinLength("phone", 9))
             { }
             else {
-                if (!checkLength("zip", 5))
+                if (!checkMinLength("zip", 5))
                 { }
                 else {
-                    document.getElementsByTagName("form")[0].submit();
-                    window.alert("Thank you for submitting your information.");
+                    if (!checkMaxLength("details", 500))
+                    { }
+                    else {
+                        document.getElementsByTagName("form")[0].submit();
+                        window.alert("Thank you for submitting your information.");
+                    }
                 }
             }
         }
@@ -359,7 +363,8 @@ function checkRadio() {
     }
 }
 
-function checkLength(id, len) {
+//(project 6), make sure fields are min length
+function checkMinLength(id, len) {
     var leng = document.getElementById(id).value.length
     if (leng < len) {
         if (id == "phone")
@@ -373,7 +378,21 @@ function checkLength(id, len) {
         document.getElementById("errorMessage").innerHTML = "";
         return true;
     }
-  
+
+}
+
+function checkMaxLength(id, len) {
+    var leng = document.getElementById(id).value.length
+    if (leng > len) {
+        if (id == "details")
+            document.getElementById("errorMessage").innerHTML = "The details can not be more than 500 characters.";
+        return false;
+    }
+    else {
+        document.getElementById("errorMessage").innerHTML = "";
+        return true;
+    }
+
 }
 
 //for project 6, clear select values so user will choose 

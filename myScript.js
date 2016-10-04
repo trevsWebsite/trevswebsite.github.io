@@ -1,8 +1,8 @@
 ﻿/*
 
 	Trevor Kelley 2020267 CIS166 
-	Project 4
-	9/11/16
+	Project 6
+	10/3/16
 
 */
 
@@ -15,6 +15,8 @@ var phDataOK = true;
 var zipDataOK = true;
 var lNameDataOK = true;
 var fNameDataOK = true;
+
+var formOK = 0; //(project 6);
 	
 var pics = ['images/at_stPeter.jpg', 
 			'images/britGallery.jpg', 
@@ -314,6 +316,75 @@ function alignDivs()
 	document.getElementsByClassName("box1B")[6].style.width = avgBoxWidth;
 }
 
+//(project 6), validate form
+function validateForm(event) {
+    if (event.preventDefault) {
+        event.preventDefault(); // prevent form from submitting
+    } else {
+        event.returnValue = false; // prevent form from submitting in IE8
+    }
+    if (phDataOK & zipDataOK & lNameDataOK & fNameDataOK) 
+    {
+        if (!checkRadio())
+        { }
+        else {
+            if (!checkLength("phone", 9))
+            { }
+            else {
+                if (!checkLength("zip", 5))
+                { }
+                else {
+                    document.getElementsByTagName("form")[0].submit();
+                    window.alert("Thank you for submitting your information.");
+                }
+            }
+        }
+    }
+}
+
+//(project 6), make sure one of radio buttons is checked
+function checkRadio() {
+    var cty = document.getElementsByName("country")
+    if (!cty[0].checked && !cty[1].checked) {
+        // verify that a country is selected
+        cty[0].style.outline = "1px solid red";
+        cty[1].style.outline = "1px solid red";
+        document.getElementById("errorMessage").innerHTML ="please choose Inside the US or outside the US";
+        return false;
+    }
+    else
+    {
+        document.getElementById("errorMessage").innerHTML ="";
+        return true;
+    }
+}
+
+function checkLength(id, len) {
+    var leng = document.getElementById(id).value.length
+    if (leng < len) {
+        if (id == "phone")
+            document.getElementById("errorMessage").innerHTML = "the Phone number must be at least 9 digits";
+        if (id == "zip")
+            document.getElementById("errorMessage").innerHTML = "the Zip code must be at least 5 digits";
+        return false;
+    }
+    else
+    {   
+        document.getElementById("errorMessage").innerHTML = "";
+        return true;
+    }
+  
+}
+
+//for project 6, clear select values so user will choose 
+function clearSelect() {
+    var selectBox = document.getElementById("title");
+    selectBox.selectedIndex = -1;
+    selectBox.style.boxShadow = "none";
+}
+
+
+
 // create Listeners for Main image on index page.
 function createListeners() {
 
@@ -321,23 +392,30 @@ function createListeners() {
     var mainImage = document.getElementById("varImage");
     mainImage.addEventListener("click", changePic, false);
 
-    alignDivs();
+    alignDivs(); // align boxes
 
+    // (Project 6)create listener for submit on form
+    var infoForm = document.getElementsByTagName("form")[0];
+    if (infoForm.addEventListener) {
+        infoForm.addEventListener("submit", validateForm, false);
+    } 
+    else if (infoForm.attachEvent) {
+       infoForm.attachEvent("onsubmit", validateForm);
+   }
+
+   // (Project 6)
+   clearSelect();
+
+
+   // (project 5)
     var ph = document.getElementById("phone");
     ph.value = "";
-    //ph.addEventListener("load", verifyData(ph), false);
-
     var zp = document.getElementById("zip");
     zp.value = "";
-    //zp.addEventListener("load", verifyData(zp), false);
-
     var ln = document.getElementById("lastName");
     ln.value = "";
-    //ln.addEventListener("load", verifyData(ln), false);
-
     var fn = document.getElementById("firstName");
     fn.value = "";
-    //fn.addEventListener("load", verifyData(fn), false);
 
 
 }

@@ -3,8 +3,8 @@
 <!--
 
 	Trevor Kelley 2020267 CIS166 
-	Project 4
-	9/11/16
+	Project 6
+	10/3/16
 -->
     <head>
         <title>Index</title>
@@ -75,19 +75,37 @@
        <span style="height:50%; display: inline-block" >
 		   <div class="box1A" >
 			  <form style="margin-top:10px">
+                  <h3> Tell us about yourself and recieve free coupons and Vouchers</h3>
+                       <input type="radio" name="country" id="inUS" value="insideUSA" />
+                       <label for="in">Inside the US</label>
+                       <input type="radio" name="country" id="outUS" value="outsideUSA" />
+                       <label for="out">Outside the US</label>
+                  <br/>
+                  <select class="form_inputs" id="title" name="title" required="required">
+                      <option value="mr">Mr.</option>
+                      <option value="ms">Ms.</option>
+                      <option value="mrs">Mrs.</option>        
+                  </select>
+                  <br/>
+                  <br/>     
 				  <a class="form_inputs"> First name:</a><br>
-				  <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)">
+				  <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)" required="required">
 				  <a class="errorMark" id="fNameMark"> </a><br><br>
 				  <a class="form_inputs">Last name:</a><br>
-				  <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)">
+				  <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)" required="required">
 				  <a class="errorMark" id="lNameMark"> </a><br><br>
 				  <a class="form_inputs">Phone Number: (No Hyphens)</a><br>
-				  <input class="form_inputs" type="text" id="phone" value="" maxlength="15" size="16" oninput="verifyData(phone)">
+				  <input class="form_inputs" type="text" id="phone" min=9 value="" maxlength="15" size="16" oninput="verifyData(phone)" required="required">
 				  <a class="errorMark" id="phoneMark"> </a><br><br>
 				  <a class="form_inputs">Zip Code:</a><br>
-				  <input class="form_inputs" type="text" id="zip" value="" maxlength="5" size="6" oninput="verifyData(zip)">
+				  <input class="form_inputs" type="text" id="zip" min= 5 value="" maxlength="5" size="6" oninput="verifyData(zip)" required="required">
 				  <a class="errorMark" id="zipMark"> </a>
-				  <a ><input  type="submit" value="Submit" Style="float:left; margin-left:15px;" ></a>
+                  <br/>
+                  <br/>
+                  <textarea id="details" name="details" rows="6" cols="40" placeholder="Maximum of 500 characters"></textarea>
+				  <br/>
+                  <br/>
+                  <a ><input name=Submit type="submit" value="Submit" Style="float:left; margin-left:15px;" ></a>
 				  <br>
 				  <p id="errorMessage" style="font-size:large; color:Red"></p> <!-- place for error message -->
 			  </form> 

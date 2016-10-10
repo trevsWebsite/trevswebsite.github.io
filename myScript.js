@@ -1,8 +1,8 @@
 ﻿/*
 
 	Trevor Kelley 2020267 CIS166 
-	Project 6
-	10/3/16
+	Project 7
+	10/8/16
 
 */
 
@@ -175,7 +175,6 @@ function changePic() {
 }
 
 function changePic(direction) {
-    
 
     if (direction.id =="left") 
         mainPic--;
@@ -270,10 +269,11 @@ function verifyData(data) {
 
 function feature(index) {
     switch (index) {
-        case "online": if(navigator.onLine)
-							document.getElementById("info_online").innerHTML = "Online";
-						else
-							document.getElementById("info_online").innerHTML = "Offline";
+        case "online": 
+					if(navigator.onLine)
+						document.getElementById("info_online").innerHTML = "Online";
+					else
+						document.getElementById("info_online").innerHTML = "Offline";
             break;
         case "platform": document.getElementById("info_plat").innerHTML = navigator.platform;
             break;
@@ -325,7 +325,7 @@ function validateForm(event) {
     }
     if (phDataOK & zipDataOK & lNameDataOK & fNameDataOK) 
     {
-        if (!checkRadio())
+        if (!checkRadio("country","errorMessage")[0])
         { }
         else {
             if (!checkMinLength("phone", 9))
@@ -347,19 +347,24 @@ function validateForm(event) {
 }
 
 //(project 6), make sure one of radio buttons is checked
-function checkRadio() {
-    var cty = document.getElementsByName("country")
+function checkRadio(_element, errorMes) {
+    var cty = document.getElementsByName(_element)
     if (!cty[0].checked && !cty[1].checked) {
         // verify that a country is selected
         cty[0].style.outline = "1px solid red";
         cty[1].style.outline = "1px solid red";
-        document.getElementById("errorMessage").innerHTML ="please choose Inside the US or outside the US";
-        return false;
+		if(_element == "country")
+			document.getElementById("errorMessage").innerHTML ="please choose Inside the US or outside the US";
+		if(_element == "time")
+			document.getElementById("errors").innerHTML ="please choose Elapsed time or Projected time.";
+        return [false, cty];
     }
     else
     {
-        document.getElementById("errorMessage").innerHTML ="";
-        return true;
+		document.getElementById(errorMes).innerHTML ="";
+		cty[0].style.outline = "";
+        cty[1].style.outline = "";
+        return [true, cty];
     }
 }
 
@@ -380,7 +385,7 @@ function checkMinLength(id, len) {
     }
 
 }
-
+// supports project 6
 function checkMaxLength(id, len) {
     var leng = document.getElementById(id).value.length
     if (leng > len) {
@@ -402,7 +407,173 @@ function clearSelect() {
     selectBox.style.boxShadow = "none";
 }
 
+//project 7: calculate the time between input and current time
+function getTime()
+{				  //jan feb mar apr may jun jul aug sep oct nov dec
+	dayOfMonths = [ 31,  28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+	radioResults = checkRadio("time", "errors");
+	if(!radioResults[0])
+	{	
+		///user did not choose either radio button
+	}
+	else
+	{	
+		var input = document.getElementById("dateSelected").value;
+		var inDate = new Date(input);
+		
+		if (inDate == "Invalid Date" )
+		{
+			// display error message
+			document.getElementById("errors").innerHTML = "Error, You have entered an invalid date";
+		}
+		else // date is valid, continue...
+		{
+			var inYear = inDate.getFullYear();
+			var inMonth = inDate.getMonth() + 1;
+			var inDay = inDate.getDate();
+			inputD = { year: inYear, month: inMonth, date: inDay}; //create date object from input
+			
+			cDate = new Date();
+			var cYear = cDate.getFullYear();
+			var cMonth = cDate.getMonth() + 1;
+			var cDay = cDate.getDate();
+			currD = { year: cYear, month: cMonth, date: cDay}; //create date object from current date
+			
+			var years = 0;
+			var months = 0;
+			var days = 0;
+			
+			if (radioResults[1][0].checked)// elapsed time
+			{
+				if(!validateDateBack(currD,inputD))
+				{
+					document.getElementById("errors").innerHTML = "Error, Value must be less than current date";
+				}
+				else // date input is OK
+				{
+					document.getElementById("errors").innerHTML = "";
+					years =  cYear -inYear;	
+					if ( inMonth <= cMonth )
+					{	
+						if ( inMonth < cMonth )
+						{	
+							months = cMonth - inMonth;
+						}			
+					}
+					else
+					{
+						months = 12 -  inMonth + cMonth;
+						years--;
+					}
+					if(cDay < inDay)
+					{
+						months--;
+						days = dayOfMonths[inMonth-1] - inDay + cDay;
+						if( inMonth == 2) // if FEB, check for Leap years, if so, add to more day
+							days +=checkForLeaps(cYear, years);
+					}
+					else
+						days = cDay - inDay;
+				}
+			}
+            else // projected time
+			{
+				if(!validateDateForward(currD,inputD))
+				{
+					document.getElementById("errors").innerHTML = "Error, Value must be greater than current date";
+				}
+				else // input is OK
+				{
+					document.getElementById("errors").innerHTML = "";
+					years = inYear - cYear;	
+					if ( inMonth <= cMonth )
+					{	
+						if ( inMonth < cMonth )
+						{	
+							years--;
+							months = 12 - cMonth + inMonth;
+						}	
+						if ( inMonth == cMonth && inDay < cDay)
+						{
+							years--;
+							months = 11;
+						}			
+					}
+					else
+					{
+						months = inMonth - cMonth;
+					}
+					if(cDay < inDay)
+						days = inDay - cDay;
+					else
+						days = cDay - inDay;
+				}
+			}	
+		    // display info
+			document.getElementById("years").innerHTML = " " + years;
+			document.getElementById("months").innerHTML = " " + months;
+			document.getElementById("days").innerHTML = " " + days;		
+		}
+	}
+}
 
+// project 7:  check for leap years
+function checkForLeaps(year, years)
+{ 
+    var count = 0;
+	for(x =0; x < years; x++ )
+	{
+		if ((year - x) % 4 == 0)
+		{	
+			count++;
+			break;
+		}
+	}
+	return count;
+}				
+//for project 7:  make sure input date is greater than current Date
+function validateDateForward (currentDate,  inputDate)
+{
+	var ok = true;
+	
+	if( inputDate.year < currentDate.year)
+	{ 
+		ok = false;
+	}
+    else
+		if(inputDate.year == currentDate.year && inputDate.month < currentDate.month )
+		{
+			ok = false;
+		}
+		else
+			if(inputDate.year == currentDate.year && inputDate.month == currentDate.month && inputDate.date < currentDate.date)
+			{
+				ok = false;
+			}
+	return ok;
+}
+
+//for project 7:  make sure input date is less than current Date
+function validateDateBack (currentDate,  inputDate)
+{
+	var ok = true;
+	
+	if( inputDate.year > currentDate.year)
+	{ 
+		ok = false;
+	}
+    else
+		if(inputDate.year == currentDate.year && inputDate.month > currentDate.month )
+		{
+			ok = false;
+		}
+		else
+			if(inputDate.year == currentDate.year && inputDate.month == currentDate.month && inputDate.date > currentDate.date)
+			{
+				ok = false;
+			}
+	return ok;
+}
 
 // create Listeners for Main image on index page.
 function createListeners() {

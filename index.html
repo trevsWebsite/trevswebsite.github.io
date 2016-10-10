@@ -3,8 +3,8 @@
 <!--
 
 	Trevor Kelley 2020267 CIS166 
-	Project 6
-	10/3/16
+	Project 7
+	10/8/16
 -->
     <head>
         <title>Index</title>
@@ -133,7 +133,32 @@
 				<a href="https://travel.gc.ca/travelling/advisories" target="canWin" style="font-family:Verdana;">Gouvernment Du Canada </a> <br />
 			</div>
             <div class="box1A" >
-				<p>(future)</p>
+				<p>Calculate your time until or since your travel date</p>
+				<form>
+				  <fieldset>
+					<input type="radio" name="time" id="eTime"  />
+                       <label for="in">Elapsed Time</label>
+                       <input type="radio" name="time" id="pTime"  />
+                       <label for="out">Projected Time</label>
+					<br><br>
+					<label for="dateSelected">
+						Enter a date
+					</label>
+					<input type="date" id="dateSelected" maxlength="10" size="10" />
+					</fieldset>
+					<fieldset class="button">
+					<button type="button" id="determineDay" onclick="getTime()">CALCULATE</button>
+					</fieldset>
+					<fieldset>
+					<h4><a id="errors" style="color:red"></a></h4>
+					<h3>
+						 Years: <a id="years" >  </a>
+						 Months: <a id="months"> </a>
+						 Days: <a id="days" > </a>
+					 </h3>
+					</fieldset>
+
+				</form>
 			</div>
        </span>
 

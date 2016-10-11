@@ -501,7 +501,7 @@ function get_Time()
 					}
 					if (cDay < inDay) {
 					    months--;
-					    days = dayOfMonths[inMonth - 1] - inDay;
+					    days = dayOfMonths[inMonth - 1] - inDay + cDay;
 					    if (inMonth == 2) // if FEB, check for Leap years, if so, add to more day
 					        days += checkForLeaps(cYear, years);
 					}

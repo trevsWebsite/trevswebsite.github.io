@@ -422,9 +422,11 @@ function get_Time()
 	else
 	{
 	    var input = document.getElementById("dateSelected").value;
+	    var fslash = /[\/-]/
+	    
 
         // Firefox doesnt support "12.2.16" ir "12-2-16"
-	    if (isFireFox) { 
+	    if (isFireFox ) { 
 	        var dash = /\//;
 	        if (!input.match(dash)) {
 	            window.alert("Please use forward slashes for input (ie: 10/8/2016)");
@@ -437,14 +439,15 @@ function get_Time()
 	        }
 
 	    }
-        // IE does not interpret year, "1/1/16" is year 0016.
+	    // IE does not interpret year, "1/1/16" is year 0016.
 	    if (isIE) {
-	        var fslash = /[\/-]/
+	       
 	        var paras = input.split(fslash);
 	        if (paras[2].length < 4 || paras[2].length > 4) {
 	            window.alert("Please enter a year in 4 digits (ie: 2016)");
 	            return 0; // get out of method
 	        }
+
         }
 
 		var inDate = new Date(input);
@@ -461,7 +464,9 @@ function get_Time()
 			var inMonth = inDate.getMonth() + 1;
 			var inDay = inDate.getDate();
 			inputD = { year: inYear, month: inMonth, date: inDay}; //create date object from input
-			
+
+			if (isChrome) // chrome reports days differently
+			    inDay++;
 			cDate = new Date();
 			var cYear = cDate.getFullYear();
 			var cMonth = cDate.getMonth() + 1;
@@ -494,17 +499,18 @@ function get_Time()
 						months = 12 -  inMonth + cMonth;
 						years--;
 					}
-					if(cDay < inDay)
-					{
-						months--;
-						days = dayOfMonths[inMonth-1] - inDay - cDay;
-						if( inMonth == 2) // if FEB, check for Leap years, if so, add to more day
-							days +=checkForLeaps(cYear, years);
+					if (cDay < inDay) {
+					    months--;
+					    days = dayOfMonths[inMonth - 1] - inDay;
+					    if (inMonth == 2) // if FEB, check for Leap years, if so, add to more day
+					        days += checkForLeaps(cYear, years);
 					}
 					else
-					    days = cDay - inDay;
-					if (isChrome) // chrome reports days differently
-					    days--;
+					    if (cDay == inDay)
+					       days = 0;
+                        else
+					        days = cDay - inDay;
+
 				}
 			}
             else // projected time
@@ -534,12 +540,18 @@ function get_Time()
 					{
 						months = inMonth - cMonth;
 					}
-					if(cDay < inDay)
-						days = inDay - cDay;
+					if (cDay < inDay) {
+					    days = inDay - cDay;
+					   
+					}
 					else
-					    days = cDay - inDay;
-					if (isChrome) // chrome reports days differently
-					    days++;
+					    if (cDay == inDay)
+					        days = 0;
+					    else {
+					        days = dayOfMonths[cMonth - 1] - cDay + inDay;
+					        months--;
+					    }
+
 				}
 			}
 			

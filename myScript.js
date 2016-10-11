@@ -6,6 +6,9 @@
 
 */
 
+var isChrome =false;
+var isIE = false;
+var isFireFox = false;
 
 var mainPic = 0;  //mainPage pic index
 
@@ -176,9 +179,9 @@ function changePic() {
 
 function changePic(direction) {
 
-    if (direction.id =="left") 
+    if (direction =="left") 
         mainPic--;
-    if (direction.id =="right")
+    if (direction =="right")
         mainPic++;
     if (mainPic > 13)
         mainPic = 0;
@@ -408,7 +411,7 @@ function clearSelect() {
 }
 
 //project 7: calculate the time between input and current time
-function getTime()
+function get_Time()
 {				  //jan feb mar apr may jun jul aug sep oct nov dec
 	dayOfMonths = [ 31,  28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 	radioResults = checkRadio("time", "errors");
@@ -417,10 +420,30 @@ function getTime()
 		///user did not choose either radio button
 	}
 	else
-	{	
-		var input = document.getElementById("dateSelected").value;
+	{
+	    var input = document.getElementById("dateSelected").value;
+
+        // Firefox doesnt support "12.2.16" ir "12-2-16"
+	    if (isFireFox) { 
+	        var dash = /\//;
+	        if (!input.match(dash)) {
+	            window.alert("Please use forward slashes for input (ie: 10/8/2016)");
+	            return 0;
+	        }
+	    }
+        // IE does not interpret year, "1/1/16" is year 0016.
+	    if (isIE) {
+	        var fslash = /[\/-]/
+	        var paras = input.split(fslash);
+	        if (paras[2].length < 4 || paras[2].length > 4) {
+	            window.alert("Please enter a year in 4 digits (ie: 2016)");
+	            return 0; // get out of method
+	        }
+        }
+
 		var inDate = new Date(input);
-		
+
+
 		if (inDate == "Invalid Date" )
 		{
 			// display error message
@@ -468,12 +491,14 @@ function getTime()
 					if(cDay < inDay)
 					{
 						months--;
-						days = dayOfMonths[inMonth-1] - inDay + cDay;
+						days = dayOfMonths[inMonth-1] - inDay - cDay;
 						if( inMonth == 2) // if FEB, check for Leap years, if so, add to more day
 							days +=checkForLeaps(cYear, years);
 					}
 					else
-						days = cDay - inDay;
+					    days = cDay - inDay;
+					if (isChrome) // chrome reports days differently
+					    days--;
 				}
 			}
             else // projected time
@@ -506,9 +531,12 @@ function getTime()
 					if(cDay < inDay)
 						days = inDay - cDay;
 					else
-						days = cDay - inDay;
+					    days = cDay - inDay;
+					if (isChrome) // chrome reports days differently
+					    days++;
 				}
-			}	
+			}
+			
 		    // display info
 			document.getElementById("years").innerHTML = " " + years;
 			document.getElementById("months").innerHTML = " " + months;
@@ -575,9 +603,27 @@ function validateDateBack (currentDate,  inputDate)
 	return ok;
 }
 
+// help find browser type
+function determineBrowser() 
+{
+    var ff = /firefox/;
+    var ie = /trident/;
+    var chm = /chrome/;
+    var bswr = navigator.userAgent.toLowerCase();
+    if (bswr.match(ff))
+        isFireFox = true;
+    if (bswr.match(ie))
+        isIE = true;
+    if (bswr.match(chm))
+        isChrome = true ;
+
+}
+
 // create Listeners for Main image on index page.
 function createListeners() {
 
+    // determine Browser Type
+    determineBrowser();
     //create event listener for main Pic
     var mainImage = document.getElementById("varImage");
     mainImage.addEventListener("click", changePic, false);

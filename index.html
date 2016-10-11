@@ -1,5 +1,4 @@
-﻿
-<html >
+﻿<html >
 <!--
 
 	Trevor Kelley 2020267 CIS166 
@@ -38,9 +37,9 @@
         <h3 class="info">Welcome world travelers! Luck of the Irish is here to help you. Enjoy all the helpful information about traveling to world sites. </h3>
         <div class= "box0" align="center" >
             <p></p>
-            <a id="left" onclick="changePic(left)"><img id="arrL" alt="arrowLeft" src="images/arrowLeft1.png"</a> 
+            <a id="left" onclick="changePic('left')"><img id="arrL" alt="arrowLeft" src="images/arrowLeft1.png"</a> 
             <a  onmouseover="showMainPicTitle()" ><img id="varImage" alt="Image of various places" src="images/various.jpg" height="650px" width="800"  /></a>
-            <a id="right" onclick="changePic(right)"><img id="arrR" alt="arrowRigth" src="images/arrowRight1.png"</a> 
+            <a id="right" onclick="changePic('right')"><img id="arrR" alt="arrowRigth" src="images/arrowRight1.png"</a> 
 			<h2 id="picTitle">World Places</h2>
         </div >
            <br />
@@ -144,10 +143,10 @@
 					<label for="dateSelected">
 						Enter a date
 					</label>
-					<input type="date" id="dateSelected" maxlength="10" size="10" />
+					<input type="date" id="dateSelected" maxlength="10" size="10" placeholder="12/31/2015" />
 					</fieldset>
 					<fieldset class="button">
-					<button type="button" id="determineDay" onclick="getTime()">CALCULATE</button>
+					<button type="button" id="determineDay" onclick="get_Time()">CALCULATE</button>
 					</fieldset>
 					<fieldset>
 					<h4><a id="errors" style="color:red"></a></h4>

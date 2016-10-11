@@ -430,6 +430,12 @@ function get_Time()
 	            window.alert("Please use forward slashes for input (ie: 10/8/2016)");
 	            return 0;
 	        }
+	        var paras = input.split(fslash);
+	        if (paras[2].length < 4 || paras[2].length > 4) {
+	            window.alert("Please enter a year in 4 digits (ie: 2016)");
+	            return 0; // get out of method
+	        }
+
 	    }
         // IE does not interpret year, "1/1/16" is year 0016.
 	    if (isIE) {

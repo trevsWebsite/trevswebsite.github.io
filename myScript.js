@@ -636,7 +636,7 @@ function validateDateBack (currentDate,  inputDate)
 function upFormObj( _id)
 {
 
-
+    document.getElementById("details").value = formObject.lname;
 	var elem = document.getElementById(_id);
 	switch (elem.id) {
 		case "travelType": formObject.type = elem.value;
@@ -653,11 +653,11 @@ function upFormObj( _id)
 		break;
 		case "phone": formObject.phone = elem.value
 		break;
-		case "1to2": formObject.group = elem.value
+		case "1to2": formObject.size = elem.value
 		break;
-		case "3to5": formObject.group = elem.value
+		case "3to5": formObject.size = elem.value
 		break;
-		case "sixPlus": formObject.group = elem.value
+		case "sixPlus": formObject.size = elem.value
 		break;
 		case "inUS": formObject.ctry = elem.value
 		break;
@@ -665,8 +665,8 @@ function upFormObj( _id)
 		break;
 	}
 
-	var test = JSON.stringify(formObject);
-	document.getElementById("details").value = test;
+	var strObj = JSON.stringify(formObject);
+	document.getElementById("details").value = strObj;
 }
 
 // help find browser type

@@ -20,6 +20,17 @@ var lNameDataOK = true;
 var fNameDataOK = true;
 
 var formOK = 0; //(project 6);
+var formObject ={
+	ctry: "",
+	title:"",
+	fname:"",
+	lname:"",
+	phone:-1,
+	zip: -1,
+	type: "",
+	areas: "",
+	size: -1
+	};
 	
 var pics = ['images/at_stPeter.jpg', 
 			'images/britGallery.jpg', 
@@ -404,8 +415,8 @@ function checkMaxLength(id, len) {
 }
 
 //for project 6, clear select values so user will choose 
-function clearSelect() {
-    var selectBox = document.getElementById("title");
+function clearSelect(str) {
+    var selectBox = document.getElementById(str);
     selectBox.selectedIndex = -1;
     selectBox.style.boxShadow = "none";
 }
@@ -621,6 +632,43 @@ function validateDateBack (currentDate,  inputDate)
 	return ok;
 }
 
+//for project8: 
+function upFormObj( _id)
+{
+
+
+	var elem = document.getElementById(_id);
+	switch (elem.id) {
+		case "travelType": formObject.type = elem.value;
+		break;
+		case "SelectInterest": formObject.areas = elem.value
+		break;
+		case "title": formObject.title = elem.value
+		break;
+		case "lastName": formObject.lname = elem.value
+		break;
+		case "firstName": formObject.fname = elem.value
+		break;
+		case "zip": formObject.zip = elem.value
+		break;
+		case "phone": formObject.phone = elem.value
+		break;
+		case "1to2": formObject.group = elem.value
+		break;
+		case "3to5": formObject.group = elem.value
+		break;
+		case "sixPlus": formObject.group = elem.value
+		break;
+		case "inUS": formObject.ctry = elem.value
+		break;
+		case "outUS": formObject.ctry = elem.value
+		break;
+	}
+
+	var test = JSON.stringify(formObject);
+	document.getElementById("details").value = test;
+}
+
 // help find browser type
 function determineBrowser() 
 {
@@ -647,6 +695,8 @@ function createListeners() {
     mainImage.addEventListener("click", changePic, false);
 
     alignDivs(); // align boxes
+	clearSelect("SelectInterest");
+	clearSelect("travelType");
 
     // (Project 6)create listener for submit on form
     var infoForm = document.getElementsByTagName("form")[0];
@@ -658,7 +708,7 @@ function createListeners() {
    }
 
    // (Project 6)
-   clearSelect();
+   clearSelect("title");
 
 
    // (project 5)

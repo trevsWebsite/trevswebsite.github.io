@@ -74,38 +74,67 @@
        <span style="height:50%; display: inline-block" >
 		   <div class="box1A" >
 			  <form style="margin-top:10px">
-                  <h3> Tell us about yourself and recieve free coupons and Vouchers</h3>
-                       <input type="radio" name="country" id="inUS" value="insideUSA" />
+                  <h4> Tell us about yourself and recieve free coupons and Vouchers</h4>
+                       <a onchange="upFormObj('inUS')"><input type="radio" name="country" id="inUS" value="insideUSA"  /></a>
                        <label for="in">Inside the US</label>
-                       <input type="radio" name="country" id="outUS" value="outsideUSA" />
+                       <a onchange="upFormObj('outUS')"><input type="radio" name="country" id="outUS" value="outsideUSA" /></a>
                        <label for="out">Outside the US</label>
                   <br/>
-                  <select class="form_inputs" id="title" name="title" required="required">
+
+                  <a class="form_inputs">title</a><br />
+                  <select class="form_inputs" id="title" name="title" required="required" onchange="upFormObj(id)">   
                       <option value="mr">Mr.</option>
                       <option value="ms">Ms.</option>
                       <option value="mrs">Mrs.</option>        
                   </select>
                   <br/>
                   <br/>     
-				  <a class="form_inputs"> First name:</a><br>
-				  <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)" required="required">
+				  <a class="form_inputs"> First name:</a>
+                  <a class="form_inputsR"> Travel Type</a>
+                  <br>
+                  <select class="form_inputsR" id="travelType" name="title" onchange="upFormObj(id)">   
+                      <option value="business">Business</option>
+                      <option value="vacation">Vacation</option> 
+                      <option value="weddinf">Wedding</option>  
+                      <option value="wildLife">Wildlife</option>  
+                      <option value="edu">Education</option>      
+                  </select>
+				  <input class="form_inputs" type="text" id="firstName" value="" maxlength="25" size="26" oninput="verifyData(firstName)" required="required" onchange="upFormObj(id)">
 				  <a class="errorMark" id="fNameMark"> </a><br><br>
-				  <a class="form_inputs">Last name:</a><br>
-				  <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)" required="required">
+				  <a class="form_inputs">Last name:</a>
+                  <a class="form_inputsR">Areas of Interest</a><br>
+				  <input class="form_inputs" type="text" id="lastName" value="" maxlength="25" size="26" oninput="verifyData(lastName)" required="required" onchange="upFormObj(id)">
+                  <select class="form_inputsR" id="SelectInterest" name="title" onchange="upFormObj(id)" >   
+                      <option value="euro">Europe</option>
+                      <option value="asia">Asia</option>  
+                      <option value="southPac">South Pacific</option> 
+                      <option value="southAm">South America</option>
+                      <option value="africa">Africa</option>          
+                  </select>
 				  <a class="errorMark" id="lNameMark"> </a><br><br>
-				  <a class="form_inputs">Phone Number: (No Hyphens)</a><br>
-				  <input class="form_inputs" type="text" id="phone" min=9 value="" maxlength="15" size="16" oninput="verifyData(phone)" required="required">
-				  <a class="errorMark" id="phoneMark"> </a><br><br>
+				  <a class="form_inputs">Phone Number: (No Hyphens)</a><br />
+				  <input class="form_inputs" type="text" id="phone" min=9 max=15 value="" maxlength="15" size="16" oninput="verifyData(phone)" onchange="upFormObj(id)" required="required">
+                  <a class="form_inputsR"> Group Size</a><br />
+                  <a class="form_inputsR" onchange="upFormObj('1to2')"><label for="in">1 to 2 </label>
+                    <input  type="radio" name="group" id="1to2" value="1-2"  />     
+                  </a><br />
+
+				  <a class="errorMark" id="phoneMark"> </a><br>
+                  <a class="form_inputsR" onchange="upFormObj('3to5')"><label for="out">3 to 5 </label>
+                    <input type="radio" name="group" id="3to5" value="3-5" /> 
+                  </a><br/>
+
 				  <a class="form_inputs">Zip Code:</a><br>
-				  <input class="form_inputs" type="text" id="zip" min= 5 value="" maxlength="5" size="6" oninput="verifyData(zip)" required="required">
+				  <input class="form_inputs" type="text" id="zip" min= 5 value="" maxlength="5" size="6" oninput="verifyData(zip)" onchange="upFormObj(id)" required="required">
+                  <a class="form_inputsR" onchange="upFormObj('sixPlus')" ><label for="out">6 or more</label>
+                    <input type="radio" name="group" id="sixPlus" value="6+" />   
+                  </a><br />
 				  <a class="errorMark" id="zipMark"> </a>
-                  <br/>
                   <br/>
                   <textarea id="details" name="details" rows="6" cols="40" placeholder="Maximum of 500 characters"></textarea>
 				  <br/>
                   <br/>
                   <a ><input name=Submit type="submit" value="Submit" Style="float:left; margin-left:15px;" ></a>
-				  <br>
 				  <p id="errorMessage" style="font-size:large; color:Red"></p> <!-- place for error message -->
 			  </form> 
 			  <!--  

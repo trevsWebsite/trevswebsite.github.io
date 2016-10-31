@@ -18,6 +18,7 @@ var phDataOK = true;
 var zipDataOK = true;
 var lNameDataOK = true;
 var fNameDataOK = true;
+var addDataOK = true;
 
 var formOK = 0; //(project 6);
 var formObject ={
@@ -203,11 +204,16 @@ function changePic(direction) {
 }
 
 
-// check phone zip code non-numbers or name for numbers
+// Update for Ch9, check phone zip code non-numbers or name for numbers
 function verifyData(data) {
 
     var nums = /[0-9]/g; //regex for chars and spaces
+	//var specChars = /[;:<>%\(\)\.=\+]/;
+	var specChars = /[^a-zA-Z-\s]/;// allow letters or dash for name inputs
+	var specChars2 = /[^a-zA-Z0-9\.\s]/;// allow letters or period for address inputs
     var mess="Please correct the field marked"
+	var mess2="No special characters are allowed as input";
+
 
     try{
         switch (data.getAttribute("id")) 
@@ -240,7 +246,12 @@ function verifyData(data) {
                 }
                 else
 				{
-					lNameDataOK = true;
+					if(data.value.match(specChars)){
+						lNameDataOK = false;
+						throw mess2;
+					}
+					else
+						lNameDataOK = true;
                 }
 				break;
             case "firstName": //verify is a letter or space
@@ -250,16 +261,29 @@ function verifyData(data) {
                 }
                 else
 				{
-                    fNameDataOK = true;
+					if(data.value.match(specChars)){
+						fNameDataOK = false;
+						throw mess2;
+					}
+					else
+						fNameDataOK = true;
 				}
-                break; 
+                break;
+			case "address": //verify is a letter or space
+					if(data.value.match(specChars2)){
+						addDataOK = false;
+						throw mess2;
+					}
+					else
+						addDataOK  = true;
+				break; 
          }
     }
     catch (message) {
         document.getElementById("errorMessage").innerHTML = message;
     }
     finally {
-        if (phDataOK && zipDataOK && lNameDataOK && fNameDataOK) {
+        if (phDataOK && zipDataOK && lNameDataOK && fNameDataOK && addDataOK ) {
             document.getElementById("errorMessage").innerHTML = "";
         }
 		if(!fNameDataOK)
@@ -278,6 +302,10 @@ function verifyData(data) {
 			document.getElementById("zipMark").innerHTML = "*";
 		if(zipDataOK)
 			document.getElementById("zipMark").innerHTML = "";
+		if(!addDataOK)
+			document.getElementById("addMark").innerHTML = "*";
+		if(addDataOK)
+			document.getElementById("addMark").innerHTML = "";
     }
 }
 
@@ -337,7 +365,7 @@ function validateForm(event) {
     } else {
         event.returnValue = false; // prevent form from submitting in IE8
     }
-    if (phDataOK & zipDataOK & lNameDataOK & fNameDataOK) 
+    if (phDataOK & zipDataOK & lNameDataOK & fNameDataOK & addDataOK) 
     {
         if (!checkRadio("country","errorMessage")[0])
         { }
@@ -350,14 +378,18 @@ function validateForm(event) {
                 else {
                     if (!checkMaxLength("details", 500))
                     { }
-                    else {
-                        document.getElementsByTagName("form")[0].submit();
-                        window.alert("Thank you for submitting your information.");
-                    }
-                }
-            }
-        }
-    }
+					else{
+						if(!checkMinLength("address", 3))
+						{}
+						else {
+							document.getElementsByTagName("form")[0].submit();
+							window.alert("Thank you for submitting your information.");
+                    	}
+					}
+				}
+			}
+		}
+	}
 }
 
 //(project 6), make sure one of radio buttons is checked
@@ -720,6 +752,8 @@ function createListeners() {
     ln.value = "";
     var fn = document.getElementById("firstName");
     fn.value = "";
+	var ad = document.getElementById("address");
+    ad.value = "";
 
 
 }

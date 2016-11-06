@@ -5,13 +5,16 @@
 	10/8/16
 
 */
+var waitForUser; // for getting location (project 10)
+var mapSuccess = false;
+var startTime =0 ;
+var processTime =0;
 
 var isChrome =false;
 var isIE = false;
 var isFireFox = false;
 
 var mainPic = 0;  //mainPage pic index
-
 var availWidth = 0;
 
 var phDataOK = true;
@@ -33,6 +36,7 @@ var formObject ={
 	size: -1
 	};
 	
+// arrary of all pics on server
 var pics = ['images/at_stPeter.jpg', 
 			'images/britGallery.jpg', 
 			'images/cityHall.jpg',
@@ -699,6 +703,77 @@ function upFormObj( _id)
 
 	var strObj = JSON.stringify(formObject);
 	document.getElementById("details").value = strObj;
+}
+
+// For project 10, get geolocation
+function getLocation() {
+	
+	//clear form
+	document.getElementById("pTime").innerHTML = "";
+    document.getElementById("latt").innerHTML = "";
+	document.getElementById("long").innerHTML = "";
+	document.getElementById("alti").innerHTML = "";
+	document.getElementById("map").style.visibility = "hidden";
+	//start timer
+    wait4User = setTimeout(Fail, 10000);
+    if (navigator.geolocation) {
+		startTime = performance.now(); //start pTime
+		navigator.geolocation.getCurrentPosition(displayLocationsParameters, Fail);
+    } else {
+		mapSuccess = false;
+        Fail();
+    }
+}
+
+// For project 10, display Latitude, longitude, altitude, processTime
+function displayLocationsParameters(position) {
+    mapSuccess= true;
+	document.getElementById("latt").innerHTML = "Latitude: " + position.coords.latitude;
+	document.getElementById("long").innerHTML = "Longitude: " + position.coords.longitude;
+	var _altitude = position.coords.altitude;
+	processTime = performance.now() - startTime;
+	if (_altitude > 0)
+	{
+		document.getElementById("alti").innerHTML = "Altitude: " + position.coords.altitude;
+	}
+	else
+		document.getElementById("alti").innerHTML = "Altitude: Not Available";
+    document.getElementById("pTime").innerHTML = "Process Time:  " + (processTime/1000).toFixed(4) + " seconds";
+    createMap(position);
+}
+
+// For project 10, handle failure to get geolocation
+function Fail() {
+	mapSuccess = false;
+    document.getElementById("latt").innerHTML = "Unable to access your current location.";
+    createMap();
+}
+
+//For Project 10, create map for geolocation
+function createMap( position) {
+	
+    // set general map of US, if geolocation fails	
+    Latt = 39.750453;
+    Long = -98.003018;
+	var _zoom = 3;
+	// show map on index page
+	document.getElementById("map").style.visibility = "visible";
+	clearTimeout(wait4User);
+    if (mapSuccess) {		
+        Latt =  position.coords.latitude;
+        Long =  position.coords.longitude;
+		_zoom = 18;
+    }
+    else {
+        document.getElementById("latt").innerHTML = "Unable to access your current location or permission timed-out.";
+    }
+
+    var mapOptions = {
+        center: new google.maps.LatLng(Latt, Long),
+		zoom: _zoom
+
+    };
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
 // help find browser type

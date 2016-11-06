@@ -27,7 +27,7 @@
 		    float:left;
 			border:6px;
 			width:30%;
-			height: 655px;
+			height: 665px;
 			border-style:ridge; 
 			border-color:#669900;  
 			text-align:center;  padding-bottom:20px; padding-top:0px; padding-left:5px; padding-right:5px; 
@@ -155,6 +155,12 @@
 			margin-bottom:1px;
 		}
 		
+		.headerGeos
+		{
+			margin:2;
+			padding:2;
+		}
+		
 	    fieldset 
 	    {
 		  margin-top: 1px;
@@ -162,6 +168,13 @@
 		  background: #DCF0CC;
 		  text-align:center;
 	    }
+		
+		#map {
+			min-height: 300px;
+			width: 100%;
+			float: left;
+			clear: left;
+		}
 
 	    /* animate title to swing, found on w3schools */
 	    /*.divSpecl {  

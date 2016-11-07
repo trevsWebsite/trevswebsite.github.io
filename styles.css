@@ -170,11 +170,12 @@
 	    }
 		
 		#map {
-			min-height: 300px;
+			min-height: 320px;
 			width: 100%;
 			float: left;
 			clear: left;
 		}
+		
 
 	    /* animate title to swing, found on w3schools */
 	    /*.divSpecl {  

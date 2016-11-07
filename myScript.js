@@ -709,7 +709,7 @@ function upFormObj( _id)
 function getLocation() {
 	
 	//clear form
-	document.getElementById("pTime").innerHTML = "";
+	document.getElementById("proTime").innerHTML = "";
     document.getElementById("latt").innerHTML = "";
 	document.getElementById("long").innerHTML = "";
 	document.getElementById("alti").innerHTML = "";
@@ -738,7 +738,7 @@ function displayLocationsParameters(position) {
 	}
 	else
 		document.getElementById("alti").innerHTML = "Altitude: Not Available";
-    document.getElementById("pTime").innerHTML = "Process Time:  " + (processTime/1000).toFixed(4) + " seconds";
+    document.getElementById("proTime").innerHTML = "Process Time:  " + (processTime/1000).toFixed(4) + " seconds";
     createMap(position);
 }
 

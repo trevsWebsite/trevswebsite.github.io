@@ -776,6 +776,42 @@ function createMap( position) {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
+function createMapsForCity(city) {
+    window.alert("called, " + city);
+var latt = 0.0;
+var long = 0.0;
+    switch (city) {
+        case "romaMap": 
+            latt = 41.89282173;
+            long = 12.49969482;
+            break;
+        case "parisMap": 
+            latt = 48.85455043;
+            long = 2.34764099;
+            break;
+        case "londonMap": 
+            latt = 51.508904;
+            long = -0.109845;
+            break;
+        case "munichMap": latt = 48.13418904;
+            long = 11.5811348;
+            break;
+    }
+    try {
+        window.alert("in try, " + city);
+        var mapOptions = {
+            center: new google.maps.LatLng(latt, long),
+            zoom: 100
+
+        };
+        map = new google.maps.Map(document.getElementById(city), mapOptions);
+    }
+    catch (err) {
+        window.alert("error getting map for: " + city);
+    }
+
+}
+
 // help find browser type
 function determineBrowser() 
 {

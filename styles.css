@@ -165,11 +165,12 @@
 	    {
 		  margin-top: 1px;
 		  margin-bottom: 1px;
-		  background: #DCF0CC;
+		  /*background: #DCF0CC;*/
 		  text-align:center;
 	    }
 		
-		#map {
+		#map 
+		{
 			min-height: 320px;
 			width: 100%;
 			float: left;

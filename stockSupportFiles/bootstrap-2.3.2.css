@@ -335,7 +335,7 @@ a:focus {
 }
 
 .span3 {
-  width: 220px;
+  width: 150px;  /* 220px orig */
 }
 
 .span2 {
@@ -1202,7 +1202,7 @@ input[type="file"] {
 }
 
 select {
-  width: 220px;
+  width: 150px; /* 220px */
   background-color: #ffffff;
   border: 1px solid #cccccc;
 }
@@ -1400,7 +1400,7 @@ textarea.span4,
   width: 286px;
 }
 
-input.span3,
+input.span3,             /* change to span 2 */
 textarea.span3,
 .uneditable-input.span3 {
   width: 206px;

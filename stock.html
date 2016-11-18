@@ -26,7 +26,8 @@
 		<div class="span12">
 			<form class="well control-group form-inline">
 				<input type="text" id="symbol" class="input-" placeholder="Enter symbol">
-        		<button id="input" type="button" class="btn btn-primary" onclick="loadDoc(symbol)" data-loading-text="Loading quote data...">Get Quote</button>
+        		<button id="input" type="button" class="btn btn-primary" onclick="loadDoc()" data-loading-text="Loading quote data...">Get Quote</button>
+                <a id="mssg" style="color:Red; padding-left:10px" > </a>
 				<div style="display: block;" class="hide" id="resultContainer">
 					<table class="table table-bordered table-striped">
 						<thead>
@@ -35,20 +36,20 @@
 						<th>Last Price</th>
 						<th>Change</th>
 						<th>Change Percent</th>
-						<th>Change Percent YTD</th>
-						<th>Volume</th>
-						<th>Market Cap</th>
+						<th>Dividend</th>
+						<th>Yield</th>
+						<th>Market</th>
 						</tr>
 						</thead>
 					<tbody>
 						<tr>
-						<td id="cmp"></td>
-						<td id="lprice">$0.00</td>
-						<td id="chng">0.00</td>
-						<td id="pCent">0.00%</td>
-						<td id="ytd">0.00%</td>
-						<td id="vol">0</td>
-						<td id="mcap"></td>
+						<td id="cmp">&nbsp;</td>
+						<td id="lprice"></td>
+						<td id="chng"></td>
+						<td id="pCent"></td>
+						<td id="div"></td>
+						<td id="yld"></td>
+						<td id="mrkt"></td>
 						</tr>
 					</tbody>
 					</table>
@@ -59,11 +60,13 @@
 </div>
 
 <script type = "text/javascript" >
-    function loadDoc(t) {
-	    var ticSym = t.value;
-		if(ticSym != "")
-		{
-			var url ="http://dev.markitondemand.com/MODApis/Api/v2/Quote/jsonp?callback=getQuote&symbol=" + ticSym + "&_=1479002084527"
+    var to1;
+    function loadDoc() {
+        var ticSym = document.getElementById("symbol").value;
+        clearElements();
+		if(ticSym != "") {
+		    to1 = setTimeout(notifyUser, 2500)
+			var url ="https://www.google.com/finance/info?callback=getQuote&q=" + ticSym;
 			var script = document.createElement("script");
 			script.id = "jsonp";
 			script.type = "text/javascript";
@@ -71,41 +74,73 @@
 			document.body.appendChild(script);
 		}
     }
+    function notifyUser() { // timeout, callback didn't response because of invalid symbol
+        document.getElementById("mssg").innerHTML = "The ticket Symbol " + document.getElementById("symbol").value + " is invalid, please use different value."; 
+    }
+    
 
     function getQuote(inData) {
-	    var wrong = /No symbol matches found/;
-		
+        clearTimeout(to1);
+	    var wrong = /httpserver.cc: Response Code 400/;
+	    var dataOK = false;
 		try{
-		    if(inData.Status.match("SUCCESS"))
-			{			
-				document.getElementById("cmp").innerHTML = inData.Name;
-				document.getElementById("lprice").innerHTML = inData.LastPrice;
-				document.getElementById("chng").innerHTML = inData.Change.toFixed(2);
-				document.getElementById("pCent").innerHTML = inData.ChangePercent.toFixed(2);
-				document.getElementById("ytd").innerHTML = inData.ChangePercentYTD.toFixed(2);
-				document.getElementById("vol").innerHTML = inData.Volume;
-				document.getElementById("mcap").innerHTML = inData.MarketCap;
-			}
-			else if(inData.Status.match("Failure|APP_SPECIFIC_ERROR"))
-			{
-				window.alert("Sorry, API error, please try different Symbol");
-			}
-			else
-				window.alert("Can't determine results, please check entry value.")
+		    var inStr = "emtpy";
+
+		    try {
+		        inStr = JSON.stringify(inData); // change incoming data to string, is consider object because of [ and ]
+		        if (!inStr.match(wrong)) // if ticker symbol OK
+		        {   
+                    dataOK = true;
+		            inStr = inStr.replace("[", ""); //strip off backets
+		            inStr = inStr.replace("]", "");
+		            inObj = JSON.parse(inStr); // now make object
+		        }
+
+		    }
+		    catch (err) {
+		        window.alert("unable to collect data from API, " + err);
+		    }
+		    if (dataOK) {
+		        try {
+		            document.getElementById("cmp").innerHTML = inObj.t;        // symbol
+		            document.getElementById("lprice").innerHTML = inObj.l_fix; //last price
+		            document.getElementById("chng").innerHTML = inObj.c;       // change
+		            document.getElementById("pCent").innerHTML = inObj.cp;     // change percet
+		            if (inObj.div != undefined)
+		                document.getElementById("div").innerHTML = inObj.div; // div
+		            else
+		                document.getElementById("div").innerHTML = "N/A";
+		            if (inObj.yld != undefined)
+		                document.getElementById("yld").innerHTML = inObj.yld;  //yield
+		            else
+		                document.getElementById("yld").innerHTML = "N/A";
+		            document.getElementById("mrkt").innerHTML = inObj.e;  //market
+
+
+		        }
+		        catch (err) {
+		            window.alert("unable extract all data, " + err);
+		        }
+		    }
 			
 		}
-		catch(err)
-		{
-			if(inData.Message.match(wrong))
-			{
-				window.alert("No Ticket Symbol found");
-			}
-			else
-			{
+		catch(err) {
+
+		    window.alert("err message " + err);
 	            window.alert("Can't determine results, please check entry value.")
-			}
-		}	
-    }
+		}
+	}
+
+	function clearElements() { // clear table before next quote
+	    document.getElementById("mssg").innerHTML = "&nbsp;"; // error message
+	    document.getElementById("cmp").innerHTML = "&nbsp;"; // symbol
+	    document.getElementById("lprice").innerHTML = "&nbsp;"; //last price
+	    document.getElementById("chng").innerHTML = "&nbsp;";
+	    document.getElementById("pCent").innerHTML = "&nbsp;";
+	    document.getElementById("div").innerHTML = "&nbsp;"; // div
+	    document.getElementById("yld").innerHTML = "&nbsp;";  //yield
+	    document.getElementById("mrkt").innerHTML = "&nbsp;";  //market
+	}
 
 </script>
 </body>

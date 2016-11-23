@@ -8,6 +8,7 @@
         <title>Index</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />   
 		<script type ="text/javascript" src ="modernizr.custom.05819.js"></script>
+		<script src="jquery-1.11.1.min.js"></script>
         
     </head>
     
@@ -208,13 +209,18 @@
        <!--  added boxes to show different methods and properties of Navigator and Screen Objects -->
        <h3 class="info">Here is information about window properties and
         methods. Hover over the title to view the setting or property </h3>
-        <div align="center" style="display: inline-block">
-          <div class="box1B"> <a onmouseover="feature('vnr')"  onmouseout="clearElement(id)" > VNR </a><h4 id="vnr"></h4></div>
-          <div class="box1B"> <a onmouseover="feature('amzn')"  onmouseout="clearElement(id)"> AMZN  </a><h4 id="amzn"></h4></div>
-          <div class="box1B"> <a onmouseover="feature('ewz')"  onmouseout="clearElement(id)"> EWZ </a><h4 id="ewz"></h4></div>
-          <div class="box1B"> <a onmouseover="feature('xbi')"  onmouseout="clearElement(id)"> XBI </a><h4 id="xbi"></h4></div>
-          <div class="box1B"> <a onmouseover="feature('gbtc')"  onmouseout="clearElement(id)"> GBTC </a><h4 id="gbtc"></h4></div>
+        <div id="boxes" align="center" style="display: inline-block">
+          <div class="box1B"> <a onmouseover="feature('vnr')"  onmouseout="clearElement("vnr")" >  VNR  </a><h4 id="vnr"> </h4></div>
+          <div class="box1B"> <a onmouseover="feature('amzn')"  onmouseout="clearElement("amzn")"> AMZN </a><h4 id="amzn"></h4></div>
+          <div class="box1B"> <a onmouseover="feature('ewz')"  onmouseout="clearElement("ewz")">   EWZ  </a><h4 id="ewz"> </h4></div>
+          <div class="box1B"> <a onmouseover="feature('xbi')"  onmouseout="clearElement("xbi")">   XBI  </a><h4 id="xbi"> </h4></div>
+          <div class="box1B"> <a onmouseover="feature('gbtc')"  onmouseout="clearElement("gbtc")"> GBTC </a><h4 id="gbtc"></h4></div>
         </div>
+		<br>
+		<button type="button" id="hide" onclick="show_hide('hide')">.Hide() with JQUERY</button>
+		<button type="button" id="show" onclick="show_hide('show')">.Show() with JQUERY</button>
+		<button type="button" id="ranColor" onclick="ranColor()">Change Color with JQUERY</button>
+		<button type="button" id="shape" onclick="shape()">Change Shape with JQUERY</button>
 		<ul>
 			<li><h4><a href ="https://software.ncsu.edu/internet-browsing-best-practices" target="ncsu"> internet-browsing-best-practices</a></h4> 
 				It’s recommend that you only use trusted sites with valid security certificates, 

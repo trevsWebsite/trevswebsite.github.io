@@ -352,14 +352,13 @@ function clearElement(index) {
 function alignDivs()
 {
 	availWidth = window.innerWidth; //get available width
-	avgBoxWidth = (availWidth -150) / 8; //get average and set width on divs
+	avgBoxWidth = (availWidth -150) / 6; //get average and set width on divs
 	document.getElementsByClassName("box1B")[0].style.width = avgBoxWidth;
 	document.getElementsByClassName("box1B")[1].style.width = avgBoxWidth;
 	document.getElementsByClassName("box1B")[2].style.width = avgBoxWidth;
 	document.getElementsByClassName("box1B")[3].style.width = avgBoxWidth;
 	document.getElementsByClassName("box1B")[4].style.width = avgBoxWidth;
-	document.getElementsByClassName("box1B")[5].style.width = avgBoxWidth;
-	document.getElementsByClassName("box1B")[6].style.width = avgBoxWidth;
+
 }
 
 //(project 6), validate form
@@ -776,6 +775,7 @@ function createMap( position) {
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }
 
+//For Project 10, create map for geolocation
 function createMapsForCity(city) {
     window.alert("called, " + city);
 var latt = 0.0;
@@ -810,6 +810,33 @@ var long = 0.0;
         window.alert("error getting map for: " + city);
     }
 
+}
+
+//project 12, show or hide DIV for boxes
+function show_hide(str)
+{
+	if( str =="hide")	
+		$("#boxes").hide()
+	if( str =="show")	
+		$("#boxes").show()
+
+}
+
+//project 12, change colors for boxes
+function ranColor() {
+	
+	var x = [ "#ffff00", "#000000", "#65498a", "#ff0000", "#cc0099", "#ffcccc", "#ff9900", "#99cc00", "#9933cc", "#990000"];
+	var rand = (Math.random().toFixed(1)) * 10
+
+	$(".box1B").css('border-color', x[rand]);
+}
+
+//project 12, change colors for boxes
+function shape() {
+	var x = [ "3", "#000000", "#65498a", "#ff0000", "#cc0099", "#ffcccc", "#ff9900", "#99cc00", "#9933cc", "#990000"];
+	var rand = (Math.random().toFixed(2)) * 100
+		
+	$(".box1B").css('border-radius', rand + "px");
 }
 
 // help find browser type

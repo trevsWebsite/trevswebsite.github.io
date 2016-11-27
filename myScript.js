@@ -1,9 +1,7 @@
 ﻿/*
-
 	Trevor Kelley 2020267 CIS166 
-	Project 7
-	10/8/16
-
+	Project Final
+	11/27/16
 */
 var waitForUser; // for getting location (project 10)
 var mapSuccess = false;

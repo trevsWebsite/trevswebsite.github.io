@@ -1,0 +1,394 @@
+<!--
+	Trevor Kelley 2020267 CIS166 
+	Project 11
+	11/11/16
+-->
+<html lang="en-US">
+<head>
+<title>CIS166 Final TKelley</title>
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+/* Javascript code borrowed from www3school website for CIS166 assignment */
+if (window.addEventListener) {              
+    window.addEventListener("resize", browserResize);
+} else if (window.attachEvent) {                 
+    window.attachEvent("onresize", browserResize);
+}
+var xbeforeResize = window.innerWidth;
+
+function browserResize() {
+    var afterResize = window.innerWidth;
+    if ((xbeforeResize < (970) && afterResize >= (970)) || (xbeforeResize >= (970) && afterResize < (970)) ||
+        (xbeforeResize < (728) && afterResize >= (728)) || (xbeforeResize >= (728) && afterResize < (728)) ||
+        (xbeforeResize < (468) && afterResize >= (468)) ||(xbeforeResize >= (468) && afterResize < (468))) {
+        xbeforeResize = afterResize;
+        googletag.cmd.push(function() {
+            googletag.pubads().refresh([gptAdSlots[0]]);
+        });
+    }
+    if (window.screen.availWidth <= 768) {
+      restack(window.innerHeight > window.innerWidth);
+    }
+    fixDragBtn();
+    showFrameSize();    
+}
+var fileID = "";
+
+var loadSave = false;
+function getSavedFile() {
+    loadSave = true;
+    var htmlCode;
+    var paramObj = {};
+    paramObj.fileid = "tryjs_myfirst";
+    fileID = paramObj.fileid;
+    var paramA = JSON.stringify(paramObj);
+    var httpA = new XMLHttpRequest();
+    httpA.open("POST", globalURL, true);
+    httpA.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpA.onreadystatechange = function() {
+        if(httpA.readyState == 4 && httpA.status == 200) {
+            document.getElementById("textareaCode").value = httpA.responseText;
+            if (navigator.userAgent.indexOf("WebKit") > -1 && navigator.userAgent.indexOf("Edge") == -1) {
+                removetabs();
+                removespaces();
+                colorcoding();
+            }
+            loadSave = false;
+        }
+    }
+    httpA.send(paramA);   
+}
+
+</script>
+<style>  /* CSS code borrowed from www3school website for CIS166 assignment */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  color:#000000;
+  margin:0px;
+  font-size:100%;
+}
+
+#framesize span {
+  font-family:Consolas, monospace;
+}
+#container {
+  background-color:#f1f1f1;
+  width:100%;
+  overflow:auto;
+  position:absolute;
+  top:138px;
+  bottom:0;
+  height:auto;
+}
+#textareacontainer, #iframecontainer {
+  float:left;
+  height:1450px;
+  width:50%;
+}
+#textarea, #iframe {
+  height:100%;
+  width:100%;
+  padding-bottom:10px;
+  padding-top:1px;
+}
+#textarea {
+  padding-left:10px;
+  padding-right:5px;  
+}
+#iframe {
+  padding-left:5px;
+  padding-right:10px;  
+}
+#textareawrapper {
+  width:100%;
+  height:100%;
+  background-color: #ffffff;
+  position:relative;
+  box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+#iframewrapper {
+  width:100%;
+  height:100%;
+  -webkit-overflow-scrolling: touch;
+  background-color: #ffffff;
+  box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+#textareaCode {
+  background-color: #ffffff;
+  font-family: consolas,"courier new",monospace;
+  font-size:15px;
+  height:100%;
+  width:100%;
+  padding:8px;
+  resize: none;
+  border:none;
+  line-height:normal;    
+}
+textarea.textareaCC {
+  background-color:transparent !important;
+  z-index:2;
+  position:relative;
+  -webkit-text-fill-color: transparent;
+  line-height:normal;
+}
+
+#iframeResult, #iframeSource {
+  background-color: #ffffff;
+  height:100%;
+  width:100%;  
+}
+#stackV {background-color:#999999;}
+#stackV.horizontal,#stackV.horizontal,#gDriveBtn {background-color:transparent;}
+#stackV.horizontal:hover,#gDriveBtn:hover {background-color:#d3d3d3;}
+#stackH,#stackH,#gDriveBtn {background-color:transparent;}
+#stackH:hover {background-color:#d3d3d3;}
+#stackH.horizontal {background-color:#999999;}
+#textareacontainer.horizontal,#iframecontainer.horizontal{
+  height:50%;
+  float:none;
+  width:100%;
+}
+#textarea.horizontal{
+  height:100%;
+  padding-left:10px;
+  padding-right:10px;
+}
+#iframe.horizontal{
+  height:100%;
+  padding-right:10px;
+  padding-bottom:10px;
+  padding-left:10px;  
+}
+#container.horizontal{
+  min-height:200px;
+  margin-left:0;
+}
+
+@media screen and (max-width: 727px) {
+  .trytopnav {top:70px;}
+  #container {top:108px;}
+}
+@media screen and (max-width: 467px) {
+  .trytopnav {top:60px;}
+  #container {top:98px;}
+}
+@media only screen and (max-device-width: 768px) {
+  #iframewrapper {overflow: auto;}
+  #container     {min-width:320px;}
+  .stack         {display:none;}
+  #tryhome       {display:block;}
+}
+
+#saveLoader {
+    margin:20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+#iframewrapper {
+	
+}
+</style>
+
+<head></head>
+<body>
+<a  style="padding: 20px 20px 20px 20px; class="navBar"  href="index.html">HOME</a> 
+<div style="background-color:#ffffff">
+	<div>
+		<h4 style="padding-left:25px; padding-right:25px" >Below is an example of Javascript code.  The box on the left is a combination of HTML and javascript code. The box on the right is the execution of the code. You can modify the code and then click the "TRY IT" button to see the results. You can also click on "RELOAD" button to start over if you make a mistake.</h4>
+	</div>
+</div>
+
+<div > 
+<button class="buttons" style="background-color:#33f3f3; margin-left:25px" onclick="submitTryit(1)">TRY IT</button>
+<button class="buttons" style="background-color:#33f3f3; margin-left:25px" onclick="reload()">RELOAD</button>
+</div>
+<div id="container">
+  <div id="textareacontainer">
+    <div id="textarea">
+      <div id="textareawrapper">
+        <div id="codecolor"></div>
+        <textarea autocomplete="off" id="textareaCode" spellcheck="false" wrap="logical">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;Here is an example of calling a function in javaScript. Clicking on the button will call the function displayDate() which returns the Date object. We use the  document.getElementById(ID).innerHTML to display the information in the html element 'demo'. &lt;/p&gt;
+
+&lt;button type="button"
+onclick='displayDate()' &gt;Display Date & Time&lt;/button&gt;
+
+&lt;p style="color:blue;" id="demo"&gt; &nbsp; &lt;/p&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is an example of calling Navigator geolcation. Clicking on the button will call a function that in turn calls another function displayLocationsParameters.  Using the dot notation, we can use the getCurrentPosition() to get the properties Latitude and Longitude from the object. We set a 8 second timeout in case the query is unsuccessful. If successful, the properites are displayed and the timeout is cancelled. &lt;/p&gt;
+
+&lt;button type="button"
+onclick='displayLocation()' &gt; Display Location &lt;/button&gt;
+&lt;p style="color:blue;" id="demo2"&gt; &nbsp; &lt;/p&gt;
+
+&lt;p&gt;Here is an example of using animation in javaScript. Clicking on the button will call the function moveBox(). The moveBox function will set the method setInterval(). The setInterval method will call the frame() function while it evaluates an expression at specified intervals. The frame() function will change the position of the box every time it is called. The result is the appearance of a box moving from left to right.&lt;/p&gt;
+
+&lt;button type="button"
+onclick='moveBox()' &gt; Show Animation &lt;/button&gt;
+&lt;div style="width: 50px;height: 50px;position: relative;background-color: blue;" class="myBox" id="myBox"&gt; &nbsp; &lt;/div&gt;
+
+&lt;script&gt;
+var waitForUser;
+function displayDate(){
+  document.getElementById('demo').innerHTML = Date();
+}
+
+function displayLocation(){
+  wait4User = setTimeout(Fail, 8000);
+  document.getElementById('demo2').innerHTML = "Please wait..."
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(displayLocationsParameters, Fail);
+  } else { 
+      document.getElementById('demo2').innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function displayLocationsParameters(position){
+  clearTimeout(wait4User);
+  document.getElementById('demo2').innerHTML = "Latitude: " + position.coords.latitude 
+  + " Longitude: " + position.coords.longitude;
+}
+
+function Fail() {
+  clearTimeout(wait4User);
+  document.getElementById("demo2").innerHTML = "Unable to access your current location.";
+}
+
+function moveBox() {
+  var elem = document.getElementById("myBox");   
+  var pos = 10;
+  var id = setInterval(frame, 7);
+  function frame() {
+    if (pos == 550) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+}
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+</textarea>
+        <form id="codeForm" autocomplete="off" style="margin:0px;display:none;">
+          <input name="code" id="code" type="hidden">
+        </form>
+       </div>
+    </div>
+  </div>
+  <div id="iframecontainer">
+    <div id="iframe">
+      <div id="iframewrapper"><iframe id="iframeResult" name="iframeResult" frameborder="0"></iframe></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Javascript code borrowed from www3school website for CIS166 assignment */
+submitTryit()
+
+function submitTryit(n) {
+  var text = document.getElementById("textareaCode").value;
+  var ifr = document.createElement("iframe");
+  ifr.setAttribute("frameborder", "0");
+  ifr.setAttribute("id", "iframeResult");
+  ifr.setAttribute("name", "iframeResult");  
+  document.getElementById("iframewrapper").innerHTML = "";
+  document.getElementById("iframewrapper").appendChild(ifr);
+  if (loadSave == true ) {
+    ifr.setAttribute("src", "/code/opentext.htm");
+  }
+  else if (fileID != "" && loadSave == false) {
+    var t=text;
+    t=t.replace(/=/gi,"w3equalsign");
+    t=t.replace(/\+/gi,"w3plussign");    
+    var pos=t.search(/script/i)
+    while (pos>0) {
+      t=t.substring(0,pos) + "w3" + t.substr(pos,3) + "w3" + t.substr(pos+3,3) + "tag" + t.substr(pos+6);
+	  pos=t.search(/script/i);
+	}
+    document.getElementById("code").value=t;
+    document.getElementById("codeForm").action = "http://tryit.w3schools.com/tryit_view.php?x=" + Math.random();
+    document.getElementById('codeForm').method = "post";
+    document.getElementById('codeForm').acceptCharset = "utf-8";
+    document.getElementById('codeForm').target = "iframeResult";
+    document.getElementById("codeForm").submit();
+  }
+  else {
+    var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+    ifrw.document.open();
+    ifrw.document.write(text);  
+    ifrw.document.close();
+    if (ifrw.document.body && !ifrw.document.body.isContentEditable) {
+      ifrw.document.body.contentEditable = true;
+      ifrw.document.body.contentEditable = false;
+    }
+  }
+}
+if ((window.screen.availWidth <= 768 && window.innerHeight > window.innerWidth) || "" == " horizontal") 
+{restack(true);}
+
+
+function reload()
+{
+ location.reload();
+}
+
+function removetabs() {
+    var text = document.getElementById("textareaCode").value;
+    text = text.replace(/\t/g, " ");
+    document.getElementById("textareaCode").value = text;
+}
+function removespaces() {
+  var textlines, i, j, newtext = "", newline;
+  textlines = document.getElementById("textareaCode").value.split("\n");
+  for (i = 0; i < textlines.length; i++) {
+    newline = textlines[i];
+    for (j = newline.length - 1; j >= 0; j--) {
+      if (newline[j] != " ") {
+        newline = newline.substr(0, j + 1);
+        break;
+      }
+    }
+    newtext += newline + "\n";
+  }
+  document.getElementById("textareaCode").value = newtext;
+}
+
+
+function syncscroll() {
+    document.getElementById("codecolor").scrollTop = document.getElementById("textareaCode").scrollTop;
+}
+
+var stack;
+
+
+if (navigator.userAgent.indexOf("MSIE") > 0 || navigator.userAgent.indexOf("Edge") > 0) {
+    document.getElementById("gDrive").style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == document.getElementById('driveModal')) {
+    resetModal();
+  }
+}
+
+
+</script>
+
+</body>
+</html>
